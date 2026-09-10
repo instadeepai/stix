@@ -1,0 +1,34 @@
+# Python-generated files
+__pycache__/
+*.zip
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Sphinx docs build
+docs/build/
+
+# Virtual environments
+.venv
+uv.lock
+
+# IDE
+.vscode/
+
+# macOS
+**/.DS_Store
+
+# Generated plots
+tutorials/notebooks/*.pdf
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# Local-debug checkpoints written by experiments
+checkpoints/
+
+# Private environment variables
+*.env

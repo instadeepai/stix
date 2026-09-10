@@ -1,0 +1,87 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/stix"]
+
+[project]
+name = "stix-ml"
+version = "0.1.0"
+description = "A unifying framework for flows and diffusions using stochastic interpolants"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = [
+    "flax",
+    "optax",
+    "distrax",
+    "diffrax",
+    "numpy>=2.0.0",
+    # jax 0.11.1 stopped re-exporting MutableHiType from jax.experimental.hijax;
+    # flax 0.12.8 still imports it from there, so CI cannot import flax.nnx.
+    "jax>=0.5.0,<0.11.1",
+    "jaxlib>=0.5.0,<0.11.1",
+    "pydantic>=2.12.5",
+    "grain>=0.2.18",
+    "s3fs==2026.2.0",
+    "datasets>=5.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/instadeepai/stix"
+Repository = "https://github.com/instadeepai/stix"
+Documentation = "https://instadeepai.github.io/stix/"
+
+[project.optional-dependencies]
+gpu = ["jax[cuda12]>=0.5.0,<0.11.1"]
+tpu = ["jax[tpu]>=0.5.0,<0.11.1"]
+
+[dependency-groups]
+dev = [
+    "plotly>=6.6.0",
+    "nbformat>=5.10.4",
+    "huggingface-hub>=1.0.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pre-commit>=4.0.0",
+    "sphinx>=8.1.3",
+    "sphinx-design>=0.6.1",
+    "furo>=2025.7.19",
+    "matplotlib>=3.10.8",
+    "pyright>=1.1.0",
+    "ipykernel>=7.3.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["tests"]
+
+[tool.pyright]
+typeCheckingMode = "basic"
+pythonVersion = "3.12"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "D", "W", "I", "PLC", "PLE", "PLW", "A"]
+# D205 (blank line after the summary) is no longer ignored: it is the one docstring
+# rule that was drifting silently, and it is cheap and unambiguous to satisfy.
+# D100 stays ignored — module docstrings are written only where they earn their place.
+# E501 stays ignored — a Sphinx role is one unbreakable token (some are over 100
+# characters), and ruff-format already governs code width.
+ignore = ["D100", "E501"]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "D104"]
+"tests/*" = ["D", "PLC0415"]
+# Tutorial notebooks are teaching material, not API surface: a cell-local demo class
+# has no caller to form a contract with, and its prose is written to be read
+# top-to-bottom rather than to satisfy a formatter.
+"tutorials/*" = ["D"]
