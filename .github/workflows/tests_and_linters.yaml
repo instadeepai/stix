@@ -2,7 +2,7 @@ name: Tests and Linters 🧪
 
 on:
   push:
-    branches: [ main ]
+    branches: [development]
   pull_request:
 
 jobs:

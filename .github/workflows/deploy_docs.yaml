@@ -2,7 +2,7 @@ name: Documentation 📔
 
 on:
   push:
-    branches: [development]
+    branches: [main]
 
 permissions:
   contents: write
