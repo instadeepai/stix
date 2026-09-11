@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 0.1.1 - 2026-09-11
+
+### Added
+
+- `THIRD_PARTY_NOTICES.md`, documenting the licences of direct dependencies,
+  the proprietary NVIDIA CUDA/cuDNN packages pulled in by the `gpu` extra,
+  and a dated dependency snapshot for full disclosure.
+
 ## Release 0.1.0 - 2026-09-11
 
 ### Added
