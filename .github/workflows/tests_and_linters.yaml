@@ -109,11 +109,11 @@ jobs:
           create-new-comment: false
 
       - name: Publish coverage badge 📛
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development')
         uses: schneegans/dynamic-badges-action@e9a478b16159b4d31420099ba146cdc50f134483  # v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: 24f0596463ae72e22901ab44f0781140
+          gistID: a96fa297589ba72c83ee54ef6ce4a206
           filename: stix-coverage.json
           label: coverage
           message: ${{ steps.coverageComment.outputs.coverage }}
