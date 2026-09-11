@@ -1,7 +1,7 @@
 # STIX: Stochastic Interpolants, A Unifying Framework
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
-[![Python 3.11](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)](https://www.python.org/downloads/release/python-3110/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue)](https://www.python.org/downloads/release/python-3120/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Tests and Linters 🧪](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml/badge.svg?branch=main)](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml)
 ![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/maximeseince/a96fa297589ba72c83ee54ef6ce4a206/raw/stix-coverage.json)
