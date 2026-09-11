@@ -8,9 +8,7 @@
 
 ## 👀 Overview
 
-This repository provides a concise implementation and mathematical guide to **Stochastic Interpolants**, based on the framework introduced in *Stochastic Interpolants: A Unifying Framework for Flows and Diffusions* by Michael S. Albergo, Nicholas M. Boffi, and Eric Vanden-Eijnden.
-
-The goal of this project is to demonstrate how a single, minimal setup can encompass and unify a wide class of generative models, including but not limited to **Flow Matching**, **EDM-style Diffusion**, **Bayesian Flow Networks (BFNs)** and **Discrete Flow Matching**.
+This repository is a concise implementation and mathematical guide to Stochastic Interpolants (Albergo, Boffi & Vanden-Eijnden, A Unifying Framework for Flows and Diffusions). We use it as the common language for everything in the library — Flow Matching, EDM-style Diffusion, Bayesian Flow Networks (BFNs) and discrete diffusion all reduce to a choice of interpolant, coupling and solver.
 
 We also see this library as a stepping stone for future research: every component is highly modular and can be extended or swapped out with ease, especially when it comes to guidance, coupling, or multi-modality.
 
@@ -34,9 +32,7 @@ Have a look at the [Installation](#-installation) section for details on how to 
 
 **Different options for handling discrete data:** We offer mask and uniform diffusion, as well as methods to learn continuous embeddings of discrete data to be used with continuous interpolants.
 
-Have a look at the [Installation](#-installation) section for details on how to install `stix`. If you want to get started with the library or get a feel of what is possible, you can dive into the [introduction](https://instadeepai.github.io/stix/introduction.html) and the tutorials [notebooks](#-tutorials).
-
-We also provide extensive [documentation](https://instadeepai.github.io/stix/api_reference/index.html) of the different classes and components.
+New to `stix`? The [introduction](https://instadeepai.github.io/stix/introduction.html) maps these core mathematical objects onto the corresponding classes in the library, and is the recommended starting point before the tutorials below. We also provide extensive [documentation](https://instadeepai.github.io/stix/api_reference/index.html) of the different classes and components.
 
 ## 📦 Installation
 
@@ -74,21 +70,21 @@ uv run pre-commit run --all-files
 
 ## 📓 Tutorials
 
-The [`tutorials/notebooks`](tutorials/notebooks) directory walks through the library end to end. Each notebook is self-contained and provides a thoroughly documented walkthrough.
+The [`tutorials/notebooks`](https://github.com/instadeepai/stix/tree/main/tutorials/notebooks) directory walks through the library end to end. Each notebook is self-contained and provides a thoroughly documented walkthrough.
 
 ### Getting started
 
-1. [**Training and sampling**](tutorials/notebooks/1.training_and_sampling.ipynb) : build the full pipeline to train and sample a generative model.
+1. [**Training and sampling**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/1.training_and_sampling.ipynb) : build the full pipeline to train and sample a generative model.
 
-2. [**Multimodal data loading with `grain`**](tutorials/notebooks/2.grain_multimodal_dataloading.ipynb) : feed real and synthetic data into `stix` as `Batch` objects, with checkpointing.
+2. [**Multimodal data loading with `grain`**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/2.grain_multimodal_dataloading.ipynb) : feed real and synthetic data into `stix` as `Batch` objects, with checkpointing.
 
-3. [**Building generative models**](tutorials/notebooks/3.generative_model.ipynb) : write your own `GenerativeModel` with custom losses and velocity/score conversions.
+3. [**Building generative models**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/3.generative_model.ipynb) : write your own `GenerativeModel` with custom losses and velocity/score conversions.
 
 ### Going further
 
-4. [**Conditioning and guidance**](tutorials/notebooks/4.conditioning_and_guidance.ipynb) : conditional sampling via context and intrinsic guidance recipes, and how to write your own.
-5. [**Coupling**](tutorials/notebooks/5.coupling.ipynb) : pair source and target distributions using methods like product-of-marginals, mini-batch OT, rectified flow.
-6. [**Discrete models**](tutorials/notebooks/6.discrete_models.ipynb) : train and sample discrete and mixed continuous-discrete models.
+4. [**Conditioning and guidance**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/4.conditioning_and_guidance.ipynb) : conditional sampling via context and intrinsic guidance recipes, and how to write your own.
+5. [**Coupling**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/5.coupling.ipynb) : pair source and target distributions using methods like product-of-marginals, mini-batch OT, rectified flow.
+6. [**Discrete models**](https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/6.discrete_models.ipynb) : train and sample discrete and mixed continuous-discrete models.
 
 ## 🙏 Acknowledgments
 

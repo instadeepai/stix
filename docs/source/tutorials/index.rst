@@ -9,8 +9,9 @@ can quickly get started with a broad overview of its capabilities.
 Each tutorial is a Jupyter notebook hosted in the repository; follow the
 *Open the notebook* link to view the rendered version on GitHub.
 
-Basics
-------
+New to ``stix``? We recommend reading the :doc:`Introduction </introduction>`
+first — it maps the core mathematical objects onto the library's API and will
+make the tutorials below easier to follow.
 
 Training & sampling
 ~~~~~~~~~~~~~~~~~~~~~
