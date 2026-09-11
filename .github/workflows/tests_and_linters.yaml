@@ -2,7 +2,7 @@ name: Tests and Linters 🧪
 
 on:
   push:
-    branches: [development]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -109,7 +109,7 @@ jobs:
           create-new-comment: false
 
       - name: Publish coverage badge 📛
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development')
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: schneegans/dynamic-badges-action@e9a478b16159b4d31420099ba146cdc50f134483  # v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}

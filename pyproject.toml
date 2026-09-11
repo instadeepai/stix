@@ -7,7 +7,7 @@ packages = ["src/stix"]
 
 [project]
 name = "stix-ml"
-version = "0.1.0a1"
+version = "0.1.0"
 description = "A unifying framework for flows and diffusions using stochastic interpolants"
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
