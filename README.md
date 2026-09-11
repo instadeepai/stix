@@ -102,7 +102,7 @@ The BibTeX formatted citation:
                   Brunken, Christoph and Tilly, Jules and Heyraud, Valentin},
   title        = {{stix}: Stochastic Interpolants, A Unifying Framework},
   year         = {2026},
-  version      = {0.1.0},
+  version      = {0.1.1},
   organization = {InstaDeep},
   license      = {Apache-2.0},
   url          = {https://github.com/instadeepai/stix},
