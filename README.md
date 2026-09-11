@@ -3,7 +3,7 @@
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Python 3.11](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)](https://www.python.org/downloads/release/python-3110/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-[![Tests and Linters 🧪](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml/badge.svg?branch=main)](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml)
+[![Tests and Linters 🧪](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml/badge.svg?branch=development)](https://github.com/instadeepai/stix/actions/workflows/tests_and_linters.yaml)
 ![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/maximeseince/24f0596463ae72e22901ab44f0781140/raw/stix-coverage.json)
 
 ## 👀 Overview
