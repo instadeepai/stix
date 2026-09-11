@@ -1,0 +1,120 @@
+name: Tests and Linters 🧪
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  linters:
+    name: Run Linters
+    runs-on: ubuntu-latest
+
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code 📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Run pre-commit hooks 🔍
+        run: uv run pre-commit run --all-files --verbose
+
+  docs:
+    name: Build Docs
+    runs-on: ubuntu-latest
+
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code 📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      # -W turns every Sphinx warning into an error, so a broken cross-reference
+      # or a malformed docstring fails CI instead of silently degrading the site.
+      - name: Build documentation 📔
+        run: uv run sphinx-build -W -b html docs/source/ docs/build/html/
+
+  tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code 📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Run tests 🧪
+        run: |
+          uv run pytest --verbose \
+            --cov-report xml:coverage.xml \
+            --cov-report term-missing \
+            --junitxml=pytest.xml \
+            --cov=stix
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage.xml
+
+      - name: Pytest coverage comment 💬
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@287292879eaaff04116f36d3eb1a670f6e5df1a4  # v1.1.54
+        with:
+          pytest-xml-coverage-path: ./coverage.xml
+          junitxml-path: ./pytest.xml
+          create-new-comment: false
+
+      - name: Publish coverage badge 📛
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: schneegans/dynamic-badges-action@e9a478b16159b4d31420099ba146cdc50f134483  # v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: a96fa297589ba72c83ee54ef6ce4a206
+          filename: stix-coverage.json
+          label: coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}
+          color: ${{ steps.coverageComment.outputs.color }}

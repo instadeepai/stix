@@ -1,0 +1,40 @@
+name: Documentation 📔
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code  📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Build documentation
+        run: |
+          uv run sphinx-build -b html docs/source docs/build/html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html/
+          force_orphan: true
