@@ -1,0 +1,986 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Sampling generators" href="generator.html"><link rel="prev" title="Modality" href="modality.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Generative models - STIX</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">STIX</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <span class="sidebar-brand-text">STIX</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Overview</a><input aria-label="Toggle navigation of Overview" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Core</a><input aria-label="Toggle navigation of Core" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="interpolant.html">Interpolants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embedder.html">Embedders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coupling.html">Coupling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="criterion.html">Criteria</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embedded_source_prior.html">Embedded source prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modality.html">Modality</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Generative models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generator.html">Sampling generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../nn/index.html">Neural networks</a><input aria-label="Toggle navigation of Neural networks" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nn/network.html">Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nn/dit.html">DiT components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nn/context.html">Context encoders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nn/layers.html">Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../training/index.html">Training</a><input aria-label="Toggle navigation of Training" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../training/training_loop.html">Training loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../training/loss_pipeline.html">Loss pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../training/time_sampler.html">Time samplers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../training/io_handling.html">Checkpointing and logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../sampling/index.html">Sampling</a><input aria-label="Toggle navigation of Sampling" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sampling/solver.html">Adaptive solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sampling/solver_manual.html">Manual solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sampling/guidance.html">Guidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sampling/steps.html">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sampling/utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../typing/index.html">Typing</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/api_reference/core/gen_model.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="generative-models">
+<span id="api-gen-model"></span><h1>Generative models<a class="headerlink" href="#generative-models" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.</span></span><span class="sig-name descname"><span class="pre">GenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://flax.readthedocs.io/en/latest/api_reference/flax.nnx/module.html#flax.nnx.Module" title="(in Flax)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>Generative model base class.</p>
+<p>GenerativeModel objects contain everything needed to perform sampling.
+It is responsible for:</p>
+<ul class="simple">
+<li><p>Embedding the data</p></li>
+<li><p>Computing the network output</p></li>
+<li><p>Computing the sampling-time generator (velocity, velocity+score, or rates)</p></li>
+<li><p>Computing the loss</p></li>
+</ul>
+<p>To support classifier-style intrinsic guidance, the model must override the method <a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_guidance_loss" title="stix.core.gen_model.GenerativeModel.get_guidance_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_guidance_loss()</span></code></a>
+(consumed by <a class="reference internal" href="../sampling/guidance.html#stix.sampling.guidance.get_intrinsic_guidance_generator" title="stix.sampling.guidance.get_intrinsic_guidance_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">stix.sampling.guidance.get_intrinsic_guidance_generator()</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel.get_network_output">
+<span class="sig-name descname"><span class="pre">get_network_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel.get_network_output" title="Link to this definition">¶</a></dt>
+<dd><p>Get the output from the neural network.</p>
+<p>Calls <code class="docutils literal notranslate"><span class="pre">self.network</span></code> positionally; the accepted call is the
+<a class="reference internal" href="../nn/network.html#stix.nn.Network" title="stix.nn.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> contract, which every network must satisfy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space, at time <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time.</p></li>
+<li><p><strong>context_data</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>] </em><em>| </em><em>None</em>) – Context conditioning (a pytree) consumed by the
+network’s context encoder.</p></li>
+<li><p><strong>context_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em> | </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Context masks gating <code class="docutils literal notranslate"><span class="pre">context_data</span></code>.</p></li>
+<li><p><strong>attention_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em> | </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Per-modality attention masks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The network’s raw output (structure defined by the concrete network).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel.get_embeddings">
+<span class="sig-name descname"><span class="pre">get_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_batch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel.get_embeddings" title="Link to this definition">¶</a></dt>
+<dd><p>Embed raw data <span class="math notranslate nohighlight">\((x_{\mathrm{src}}, x_{\mathrm{tgt}})\)</span> to produce the embedded pairs <span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw_batch</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs
+<span class="math notranslate nohighlight">\((x_{\mathrm{src}}, x_{\mathrm{tgt}})\)</span>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality embedded pairs <span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> raw source variables are mapped to <code class="docutils literal notranslate"><span class="pre">None</span></code> embedded source variables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair">stix.typing.variables.EmbeddedSourceTargetPair</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel.get_generator">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Convert network output to per-modality sampling generators at <span class="math notranslate nohighlight">\((z_t, t)\)</span>.</p>
+<p>The returned pytree must have one
+<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a> per modality, and each
+modality’s generator <strong>must</strong> be an instance of its declared
+<code class="docutils literal notranslate"><span class="pre">modality.generator_type</span></code> (inferred from the interpolant).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator">stix.core.generator.Generator</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel.get_guidance_loss">
+<span class="sig-name descname"><span class="pre">get_guidance_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intrinsic_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intrinsic_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel.get_guidance_loss" title="Link to this definition">¶</a></dt>
+<dd><p>An optional scalar loss used for conditional intrinsic guidance.</p>
+<p>It is consumed by <a class="reference internal" href="../sampling/guidance.html#stix.sampling.guidance.get_intrinsic_guidance_generator" title="stix.sampling.guidance.get_intrinsic_guidance_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">stix.sampling.guidance.get_intrinsic_guidance_generator()</span></code></a>
+at sampling time to guide the sampling process towards the conditional data.</p>
+<p>More precisely, the gradient of this loss is used as an estimate of
+the conditional score
+<span class="math notranslate nohighlight">\(\nabla_{z_t}\log p(c | z_t) \simeq \nabla_{z_t} \ell (c , z_t)\)</span>.</p>
+<p>This method is not implemented by default, as the exact form of the guidance loss
+typically depends on the interpretation of the network output and the embedded variables,
+which are specified by the generative model. See the <a class="reference external" href="https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/4.conditioning_and_guidance.ipynb">conditioning and guidance
+tutorial</a>
+for a worked implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – Per-modality network output for this sample.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+<li><p><strong>intrinsic_data</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality conditioning targets, one per registry
+modality.</p></li>
+<li><p><strong>intrinsic_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em> | </em><em>None</em><em>]</em>) – Per-modality 0/1 masks; <code class="docutils literal notranslate"><span class="pre">None</span></code> (whole or per-entry)
+is treated as all-ones (no masking).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar guidance loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.GenerativeModel.get_loss">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.GenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the scalar training loss for one interpolated sample.</p>
+<p><strong>The loss defines what the network learns to predict.</strong> It is therefore
+inextricably linked to <a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_generator" title="stix.core.gen_model.GenerativeModel.get_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_generator()</span></code></a>.</p>
+<p>For example, if the network output is trained against the conditional velocity,
+then <code class="docutils literal notranslate"><span class="pre">get_generator</span></code> (typically) wraps the network output directly as the
+velocity, deriving the score from it when a
+<a class="reference internal" href="generator.html#stix.core.generator.VelocityAndScore" title="stix.core.generator.VelocityAndScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityAndScore</span></code></a> is required; if it
+is trained against some other target, that conversion changes accordingly.
+For this reason there is no sensible default — each concrete model must
+implement <code class="docutils literal notranslate"><span class="pre">get_loss</span></code> alongside its prediction-to-generator conversion.
+For more details regarding the implementation of a tailored
+GenerativeModel, see the <a class="reference external" href="https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/3.generative_model.ipynb">generative model tutorial</a>.</p>
+<p>A common pattern is to compute one scalar loss per modality and reduce
+with <a class="reference internal" href="criterion.html#stix.core.loss.reduce_modality_losses" title="stix.core.loss.reduce_modality_losses"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_modality_losses()</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_out</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">z_t</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span>
+             <span class="n">embedded_pairs</span><span class="p">,</span> <span class="n">raw_pairs</span><span class="p">,</span> <span class="n">loss_mask</span><span class="p">):</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">MSECriterion</span><span class="p">()</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modality_registry</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">modality</span><span class="p">,</span> <span class="n">net_out_k</span><span class="p">,</span> <span class="n">pair_k</span><span class="p">,</span> <span class="n">eps_k</span><span class="p">,</span> <span class="n">mask_k</span><span class="p">:</span> <span class="n">criterion</span><span class="p">(</span>
+            <span class="n">net_out_k</span><span class="p">,</span>
+            <span class="n">modality</span><span class="o">.</span><span class="n">interpolant</span><span class="o">.</span><span class="n">get_conditional_velocity</span><span class="p">(</span>
+                <span class="n">pair_k</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">eps_k</span>
+            <span class="p">),</span>
+            <span class="n">t</span><span class="p">,</span>
+            <span class="n">mask_k</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">net_out</span><span class="p">,</span> <span class="n">embedded_pairs</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">loss_mask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduce_modality_losses</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Losses that cannot be decomposed per modality (e.g. cross-modality /
+coupled losses) are equally valid — simply implement them directly here
+rather than mapping over the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output for this sample.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time, shared across modalities.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.factory.</span></span><span class="sig-name descname"><span class="pre">VelocityOneSidedGenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>One-sided model whose network output <em>is</em> the (embedded) velocity field.</p>
+<p>A ready-made, predefined <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>: the
+single choice to <em>train the network on the velocity</em> fixes both methods
+the rest of the library relies on.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss" title="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_loss()</span></code></a> — a per-modality MSE between the network output and the
+interpolant’s conditional velocity, reduced across modalities.</p></li>
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator" title="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_generator()</span></code></a> — the network output already <em>is</em> the velocity; the
+score is derived from it via the interpolant and both are returned as a
+<a class="reference internal" href="generator.html#stix.core.generator.VelocityAndScore" title="stix.core.generator.VelocityAndScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityAndScore</span></code></a>.</p></li>
+</ul>
+<p><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_guidance_loss" title="stix.core.gen_model.GenerativeModel.get_guidance_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_guidance_loss()</span></code></a> is
+<strong>not</strong> implemented here. To use this model with
+<a class="reference internal" href="../sampling/guidance.html#stix.sampling.guidance.get_intrinsic_guidance_generator" title="stix.sampling.guidance.get_intrinsic_guidance_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_intrinsic_guidance_generator()</span></code></a>, subclass it and
+override that hook. See the <a class="reference external" href="https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/4.conditioning_and_guidance.ipynb">conditioning and guidance tutorial</a>
+for a worked implementation.</p>
+<p>The loss is a velocity MSE (<a class="reference internal" href="criterion.html#stix.core.loss.MSECriterion" title="stix.core.loss.MSECriterion"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSECriterion</span></code></a>) — that is
+what makes this a <em>velocity</em> model, so it is not configurable here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss">
+<span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Velocity MSE: compare the network output to the conditional velocity.</p>
+<p>One scalar loss is computed per modality (the interpolant provides the
+ground-truth conditional velocity), then reduced across modalities with
+<a class="reference internal" href="criterion.html#stix.core.loss.reduce_modality_losses" title="stix.core.loss.reduce_modality_losses"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_modality_losses()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output for this sample.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time, shared across modalities.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator">
+<span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Wrap the predicted velocity as a <a class="reference internal" href="generator.html#stix.core.generator.VelocityAndScore" title="stix.core.generator.VelocityAndScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityAndScore</span></code></a>.</p>
+<p>The network output already <em>is</em> the velocity; the score is derived from
+it via the interpolant. ODE sampling ignores the score when
+<code class="docutils literal notranslate"><span class="pre">stochasticity_scale</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator">stix.core.generator.Generator</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.factory.</span></span><span class="sig-name descname"><span class="pre">VelocityTwoSidedGenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>Two-sided model whose network output <em>is</em> the (embedded) velocity field.</p>
+<p>The two-sided counterpart of <a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel" title="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityOneSidedGenerativeModel</span></code></a>: source
+and target are both <em>data</em> distributions, transported into one another, rather
+than noise into data.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss" title="stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_loss()</span></code></a> — a per-modality MSE between the network output and the
+interpolant’s conditional velocity, reduced across modalities.</p></li>
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator" title="stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_generator()</span></code></a> — wraps the network output as a
+<a class="reference internal" href="generator.html#stix.core.generator.Velocity" title="stix.core.generator.Velocity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Velocity</span></code></a>. A deterministic interpolant
+carries no noise term, so no score exists and sampling is ODE-only
+(<code class="docutils literal notranslate"><span class="pre">stochasticity_scale=None</span></code>); that generator type is inferred from the
+interpolant.</p></li>
+</ul>
+<p>The loss is a velocity MSE (<a class="reference internal" href="criterion.html#stix.core.loss.MSECriterion" title="stix.core.loss.MSECriterion"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSECriterion</span></code></a>) — that is
+what makes this a <em>velocity</em> model, so it is not configurable here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss">
+<span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Velocity MSE: compare the network output to the conditional velocity.</p>
+<p>One scalar loss is computed per modality (the interpolant provides the
+ground-truth conditional velocity), then reduced across modalities with
+<a class="reference internal" href="criterion.html#stix.core.loss.reduce_modality_losses" title="stix.core.loss.reduce_modality_losses"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_modality_losses()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output for this sample.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time, shared across modalities.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator">
+<span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Wrap the predicted velocity as a <a class="reference internal" href="generator.html#stix.core.generator.Velocity" title="stix.core.generator.Velocity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Velocity</span></code></a> generator.</p>
+<p>A deterministic interpolant carries no noise term and therefore defines
+no score, so the inferred generator type is <code class="docutils literal notranslate"><span class="pre">Velocity</span></code>; SDE sampling is
+unavailable and the process is an ODE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator">stix.core.generator.Generator</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.NoiseOneSidedGenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.factory.</span></span><span class="sig-name descname"><span class="pre">NoiseOneSidedGenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>One-sided model whose network output <em>is</em> the (embedded) noise <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p>A ready-made, predefined <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>: the
+single choice to <em>train the network on the noise</em> fixes both methods the
+rest of the library relies on.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss" title="stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_loss()</span></code></a> — a per-modality MSE between the network output and the
+noise <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> drawn for the interpolation path, reduced across modalities.</p></li>
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator" title="stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_generator()</span></code></a> — derives the velocity and score from
+the predicted noise via each modality’s (linear) interpolant.</p></li>
+</ul>
+<p><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_guidance_loss" title="stix.core.gen_model.GenerativeModel.get_guidance_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_guidance_loss()</span></code></a> is
+<strong>not</strong> implemented here. To use this model with
+<a class="reference internal" href="../sampling/guidance.html#stix.sampling.guidance.get_intrinsic_guidance_generator" title="stix.sampling.guidance.get_intrinsic_guidance_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_intrinsic_guidance_generator()</span></code></a>, subclass it and
+override that hook. See the <a class="reference external" href="https://github.com/instadeepai/stix/blob/main/tutorials/notebooks/4.conditioning_and_guidance.ipynb">conditioning and guidance tutorial</a>
+for a worked implementation.</p>
+<p>The conversions above are only valid for a <em>one-sided linear</em> interpolant, so
+the constructor validates that every modality’s interpolant is an
+<a class="reference internal" href="interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant" title="stix.core.interpolant.OneSidedLinearStochasticInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedLinearStochasticInterpolant</span></code></a>.</p>
+<p>The loss is a noise MSE (<a class="reference internal" href="criterion.html#stix.core.loss.MSECriterion" title="stix.core.loss.MSECriterion"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSECriterion</span></code></a>) — that is what
+makes this a <em>noise</em> model, so it is not configurable here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss">
+<span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Noise MSE: compare the network output to the sampled noise <code class="docutils literal notranslate"><span class="pre">epsilon</span></code>.</p>
+<p>One scalar loss is computed per modality, then reduced across modalities
+with <a class="reference internal" href="criterion.html#stix.core.loss.reduce_modality_losses" title="stix.core.loss.reduce_modality_losses"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_modality_losses()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output for this sample.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time, shared across modalities.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator">
+<span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Derive a <a class="reference internal" href="generator.html#stix.core.generator.VelocityAndScore" title="stix.core.generator.VelocityAndScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityAndScore</span></code></a> from the predicted noise.</p>
+<p>Velocity and score are both derived from the predicted noise via the
+interpolant. Samplers ignore the score when <code class="docutils literal notranslate"><span class="pre">stochasticity_scale</span></code>
+is <code class="docutils literal notranslate"><span class="pre">None</span></code>, resulting in a ODE solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator">stix.core.generator.Generator</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.factory.</span></span><span class="sig-name descname"><span class="pre">PosteriorMixtureGenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>An all-discrete model over <code class="code docutils literal notranslate"><span class="pre">DiscreteInterpolant</span></code> modalities with <code class="code docutils literal notranslate"><span class="pre">rates_from_target_posterior</span></code>.</p>
+<p>The network head predicts target-posterior logits over the <code class="docutils literal notranslate"><span class="pre">K</span></code> data
+categories (for a mask interpolant the mask symbol is <em>excluded</em> from the logits).</p>
+<p>This model fixes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss" title="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_loss()</span></code></a> — cross-entropy of the posterior logits against the embedded target one-hot.</p></li>
+<li><p><a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator" title="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_generator()</span></code></a> — per-modality <a class="reference internal" href="generator.html#stix.core.generator.TransitionRates" title="stix.core.generator.TransitionRates"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransitionRates</span></code></a> generators computed
+using the learned posterior logits and the interpolant’s <code class="code docutils literal notranslate"><span class="pre">rates_from_target_posterior</span></code> method.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss">
+<span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Cross-entropy of the posterior logits against the embedded target one-hot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s output, interpreted as posterior logits.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator">
+<span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Turn target-posterior logits into per-modality <a class="reference internal" href="generator.html#stix.core.generator.TransitionRates" title="stix.core.generator.TransitionRates"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransitionRates</span></code></a>.</p>
+<p>Uses the interpolant’s <code class="code docutils literal notranslate"><span class="pre">rates_from_target_posterior</span></code> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.TransitionRates" title="stix.core.generator.TransitionRates">stix.core.generator.TransitionRates</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stix.core.gen_model.factory.</span></span><span class="sig-name descname"><span class="pre">VelocityAndPosteriorGenerativeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a></p>
+<p>Joint model over continuous one-sided-linear and discrete DFM modalities.</p>
+<p>Continuous modalities behave like
+<a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel" title="stix.core.gen_model.factory.VelocityOneSidedGenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocityOneSidedGenerativeModel</span></code></a>
+(velocity MSE, <code class="docutils literal notranslate"><span class="pre">VelocityAndScore</span></code> generator); discrete modalities behave
+like
+<a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel" title="stix.core.gen_model.factory.PosteriorMixtureGenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PosteriorMixtureGenerativeModel</span></code></a>
+(denoising cross-entropy, <code class="docutils literal notranslate"><span class="pre">TransitionRates</span></code> generator). Dispatch is based on the
+modality’s interpolant type, resolved per modality.</p>
+<p>Continuous modality’s must have interpolant of type <a class="reference internal" href="interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant" title="stix.core.interpolant.OneSidedLinearStochasticInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedLinearStochasticInterpolant</span></code></a>.
+Discrete modalities must have a one-sided <a class="reference internal" href="interpolant.html#stix.core.interpolant.DiscreteInterpolant" title="stix.core.interpolant.DiscreteInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscreteInterpolant</span></code></a>
+implementing <code class="code docutils literal notranslate"><span class="pre">rates_from_target_posterior</span></code>, and set <code class="docutils literal notranslate"><span class="pre">num_categories</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_loss">
+<span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Per-modality velocity MSE (continuous) or weighted CE (discrete).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output for this sample.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Interpolation time, shared across modalities.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality interpolated state in embedded space.</p></li>
+<li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.NoiseVar" title="stix.typing.variables.NoiseVar"><em>NoiseVar</em></a><em>]</em>) – Per-modality noise sample drawn for the interpolation path.</p></li>
+<li><p><strong>embedded_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair" title="stix.typing.variables.EmbeddedSourceTargetPair"><em>stix.typing.variables.EmbeddedSourceTargetPair</em></a><em>]</em>) – Per-modality embedded <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>raw_pairs</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.variables.RawSourceTargetPair" title="stix.typing.variables.RawSourceTargetPair"><em>stix.typing.variables.RawSourceTargetPair</em></a><em>]</em>) – Per-modality raw-space <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs.</p></li>
+<li><p><strong>loss_mask</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Mask" title="stix.typing.core.Mask"><em>Mask</em></a><em>]</em>) – Per-modality loss mask (all-ones when unmasked).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar loss for this sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../typing/index.html#stix.typing.core.Scalar" title="stix.typing.core.Scalar"><em>Scalar</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_generator">
+<span class="sig-name descname"><span class="pre">get_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Per-modality <code class="docutils literal notranslate"><span class="pre">VelocityAndScore</span></code> (continuous) or <code class="docutils literal notranslate"><span class="pre">TransitionRates</span></code> (discrete).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – The network’s raw output.</p></li>
+<li><p><strong>z_t</strong> (<a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a><em>[</em><a class="reference internal" href="../typing/index.html#stix.typing.core.Var" title="stix.typing.core.Var"><em>Var</em></a><em>]</em>) – Per-modality noisy state in embedded space.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="../typing/index.html#stix.typing.core.Time" title="stix.typing.core.Time"><em>Time</em></a>) – Current time, <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per-modality sampling-time generators.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.kidger.site/jaxtyping/api/pytree/#jaxtyping.PyTree" title="(in jaxtyping v0.0.0)"><em>PyTree</em></a>[<a class="reference internal" href="generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator">stix.core.generator.Generator</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="generator.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sampling generators</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="modality.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Modality</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Generative models</a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel"><code class="docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_network_output"><code class="docutils literal notranslate"><span class="pre">GenerativeModel.get_network_output()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_embeddings"><code class="docutils literal notranslate"><span class="pre">GenerativeModel.get_embeddings()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">GenerativeModel.get_generator()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_guidance_loss"><code class="docutils literal notranslate"><span class="pre">GenerativeModel.get_guidance_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.GenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">GenerativeModel.get_loss()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel"><code class="docutils literal notranslate"><span class="pre">VelocityOneSidedGenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">VelocityOneSidedGenerativeModel.get_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">VelocityOneSidedGenerativeModel.get_generator()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel"><code class="docutils literal notranslate"><span class="pre">VelocityTwoSidedGenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">VelocityTwoSidedGenerativeModel.get_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">VelocityTwoSidedGenerativeModel.get_generator()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel"><code class="docutils literal notranslate"><span class="pre">NoiseOneSidedGenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">NoiseOneSidedGenerativeModel.get_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">NoiseOneSidedGenerativeModel.get_generator()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel"><code class="docutils literal notranslate"><span class="pre">PosteriorMixtureGenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">PosteriorMixtureGenerativeModel.get_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">PosteriorMixtureGenerativeModel.get_generator()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel"><code class="docutils literal notranslate"><span class="pre">VelocityAndPosteriorGenerativeModel</span></code></a><ul>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_loss"><code class="docutils literal notranslate"><span class="pre">VelocityAndPosteriorGenerativeModel.get_loss()</span></code></a></li>
+<li><a class="reference internal" href="#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_generator"><code class="docutils literal notranslate"><span class="pre">VelocityAndPosteriorGenerativeModel.get_generator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    </body>
+</html>

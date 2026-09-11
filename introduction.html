@@ -1,0 +1,925 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Installation" href="installation/index.html"><link rel="prev" title="🤔 Why stix?" href="index.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Introduction - STIX</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">STIX</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">STIX</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_reference/index.html">Overview</a><input aria-label="Toggle navigation of Overview" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/core/index.html">Core</a><input aria-label="Toggle navigation of Core" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/interpolant.html">Interpolants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/embedder.html">Embedders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/coupling.html">Coupling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/criterion.html">Criteria</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/embedded_source_prior.html">Embedded source prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/modality.html">Modality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/gen_model.html">Generative models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/generator.html">Sampling generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/nn/index.html">Neural networks</a><input aria-label="Toggle navigation of Neural networks" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/network.html">Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/dit.html">DiT components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/context.html">Context encoders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/layers.html">Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/training/index.html">Training</a><input aria-label="Toggle navigation of Training" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/training_loop.html">Training loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/loss_pipeline.html">Loss pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/time_sampler.html">Time samplers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/io_handling.html">Checkpointing and logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/sampling/index.html">Sampling</a><input aria-label="Toggle navigation of Sampling" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/solver.html">Adaptive solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/solver_manual.html">Manual solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/guidance.html">Guidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/steps.html">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_reference/typing/index.html">Typing</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/introduction.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">stix</span></code> is a JAX / Flax NNX library for generative models based on the
+<strong>Stochastic Interpolants</strong> (Albergo, Boffi, Vanden-Eijnden,
+<a class="reference external" href="https://www.jmlr.org/papers/v26/23-1605.html">JMLR 2025</a>) and the
+<strong>Discrete Flow Matching</strong> (Gat et al.,
+<a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/f0d629a734b56a642701bba7bc8bb3ed-Abstract-Conference.html">NeurIPS 2024</a>)
+frameworks. Designed to be flexible and explicitly tailored for multi-modal
+applications, it enables the implementation of a wide variety of models,
+including flow matching, diffusion, Bayesian flow networks, and discrete flow
+matching.</p>
+<p>This page introduces the core mathematical concepts on which the library is
+built, and maps each of them onto the corresponding objects in <code class="docutils literal notranslate"><span class="pre">stix</span></code>. We
+recommend reviewing this foundation before diving into the
+<a class="reference internal" href="tutorials/index.html"><span class="doc">tutorials</span></a>, as it will make navigating the API much
+more intuitive.</p>
+<section id="the-stochastic-interpolants-framework">
+<span id="intro-framework"></span><h2>The stochastic interpolants framework<a class="headerlink" href="#the-stochastic-interpolants-framework" title="Link to this heading">¶</a></h2>
+<p>Generative modeling can be described as a <strong>transport</strong> problem, where one
+seeks to map samples from a source distribution <span class="math notranslate nohighlight">\(p_{\mathrm{src}}\)</span> to
+samples of a target distribution <span class="math notranslate nohighlight">\(p_{\mathrm{tgt}}\)</span>.</p>
+<p>Modern generative models achieve this by evolving samples from the source
+according to a Markovian dynamical process, whose generators are fitted so that
+the distribution of the evolved samples matches the target. Stochastic
+interpolants provide a generic framework for constructing such a process. Here
+we use a slightly extended version of the original construction, so that the
+same picture also encompasses discrete flow matching, and interpolants whose
+endpoints might not match the source and target exactly.</p>
+<p>Given a source and a target distribution <span class="math notranslate nohighlight">\(p_{\mathrm{src}}\)</span> and
+<span class="math notranslate nohighlight">\(p_{\mathrm{tgt}}\)</span>, an interpolant is a process <span class="math notranslate nohighlight">\(z_t\)</span> on the time
+interval <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>, defined as</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = I_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}, \epsilon)\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span> is drawn from a joint
+distribution <span class="math notranslate nohighlight">\(\pi\)</span> whose marginals match <span class="math notranslate nohighlight">\(p_{\mathrm{src}}\)</span> and
+<span class="math notranslate nohighlight">\(p_{\mathrm{tgt}}\)</span> respectively, and <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random noise
+variable <em>independent</em> of <span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>.</p>
+<p>Typically the interpolant is built so that the path endpoints match the pair
+variables,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_0 = z_{\mathrm{src}}, \qquad z_1 = z_{\mathrm{tgt}}.\]</div>
+</div>
+<p>The marginal laws of this process then form a continuous path of probability
+distributions <span class="math notranslate nohighlight">\((p_t)_{0 \leq t \leq 1}\)</span> with <span class="math notranslate nohighlight">\(p_0 = p_{\mathrm{src}}\)</span>
+and <span class="math notranslate nohighlight">\(p_1 = p_{\mathrm{tgt}}\)</span>.</p>
+<p>Having defined an interpolant, one then fits the generator of the considered
+dynamical process so as to reproduce its path of marginals, and uses this
+learned generator to evolve samples of the source distribution into samples of
+the target one.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">stix</span></code>, interpolants are represented by
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant" title="stix.core.interpolant.Interpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Interpolant</span></code></a> objects, whose
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.interpolate" title="stix.core.interpolant.Interpolant.interpolate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interpolate()</span></code></a> method implements the
+map <span class="math notranslate nohighlight">\(I_t\)</span>. The generators of the process are encapsulated in subclasses
+of a <a class="reference internal" href="api_reference/core/generator.html#stix.core.generator.Generator" title="stix.core.generator.Generator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a> data class. Two types of Markovian
+processes are implemented: continuous processes, defined by a stochastic or an
+ordinary differential equation (S/ODE), and discrete processes defined by a
+continuous-time Markov Chain (CTMC). Each type of Markovian process is
+associated with a given <code class="docutils literal notranslate"><span class="pre">Generator</span></code> subclass, which is a property of the
+corresponding <code class="docutils literal notranslate"><span class="pre">Interpolant</span></code>.</p>
+<p>A generative model is completely defined by a
+<a class="reference internal" href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel" title="stix.core.gen_model.GenerativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenerativeModel</span></code></a> object. Importantly, this object
+is responsible for providing the <code class="docutils literal notranslate"><span class="pre">Generator</span></code>s that are required to evolve
+the dynamical process at sampling time. It encapsulates the learnable
+components that allow to compute the <code class="docutils literal notranslate"><span class="pre">Generator</span></code>s, as well as everything
+that defines the strategy for training these components.</p>
+</section>
+<section id="multi-modal-setups-and-embeddings">
+<span id="intro-multimodal"></span><h2>Multi-modal setups and embeddings<a class="headerlink" href="#multi-modal-setups-and-embeddings" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">stix</span></code> is designed to support multi-modal generative models. We distinguish
+two data spaces: a <em>raw</em> data space, which describes data in the form in which
+they are observed or stored, and an <em>embedded</em> space in which the interpolation
+takes place. These spaces may coincide in practice, but keeping them separate
+allows the model to choose a representation that is more convenient for the
+generative task, for example, by carrying out the dynamics in a latent space
+rather than directly on the observed data. We generally denote variables in the
+raw data space by <span class="math notranslate nohighlight">\(x\)</span> and their counterparts in the embedded space by
+<span class="math notranslate nohighlight">\(z\)</span>. The maps between these spaces are encapsulated in
+<a class="reference internal" href="api_reference/core/embedder.html#stix.core.embedder.Embedder" title="stix.core.embedder.Embedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Embedder</span></code></a> objects.</p>
+<p>In the embedded space, variables are decomposed into a collection of
+<em>modalities</em> of different shapes and nature (discrete or continuous), each one
+associated with a specific interpolant. Modalities are described by
+<a class="reference internal" href="api_reference/core/modality.html#stix.core.modality.Modality" title="stix.core.modality.Modality"><code class="xref py py-class docutils literal notranslate"><span class="pre">Modality</span></code></a> objects containing, among other things,
+the corresponding <code class="docutils literal notranslate"><span class="pre">Embedder</span></code> and <code class="docutils literal notranslate"><span class="pre">Interpolant</span></code>. The collection of
+modalities is managed by a single
+<a class="reference internal" href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry" title="stix.core.modality.ModalityRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModalityRegistry</span></code></a>, which contains a generic pytree
+of <code class="docutils literal notranslate"><span class="pre">Modality</span></code> objects. The registry itself is owned by the
+<code class="docutils literal notranslate"><span class="pre">GenerativeModel</span></code>, tying the representation of the data, the interpolation
+strategy, and the corresponding generators together into a single object.</p>
+</section>
+<section id="one-and-two-sided-interpolants">
+<span id="intro-one-sided"></span><h2>One- and two-sided interpolants<a class="headerlink" href="#one-and-two-sided-interpolants" title="Link to this heading">¶</a></h2>
+<p>Interpolants can be partitioned into two categories: the one- and two-sided
+interpolants.</p>
+<p><strong>One-sided</strong> interpolants, implemented by
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedInterpolant" title="stix.core.interpolant.OneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedInterpolant</span></code></a>, do not depend on any
+source variable <span class="math notranslate nohighlight">\(z_{\mathrm{src}}\)</span>, so their interpolated variables read</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = I_t(z_{\mathrm{tgt}}, \epsilon).\]</div>
+</div>
+<p>The source variable has been forgotten, so the joint <span class="math notranslate nohighlight">\(\pi\)</span> reduces to the
+target distribution, and in principle <span class="math notranslate nohighlight">\(z_0\)</span> depends only on
+<span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p>Interpolants that explicitly depend on both a source and a target variable are
+said to be <strong>two-sided</strong>.</p>
+</section>
+<section id="continuous-interpolants">
+<span id="intro-continuous"></span><h2>Continuous interpolants<a class="headerlink" href="#continuous-interpolants" title="Link to this heading">¶</a></h2>
+<p>We call <strong>continuous interpolant</strong> an interpolant of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = J_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}) + \gamma_t\,\epsilon,
+\qquad \epsilon \sim \mathcal{N}(0, I).\]</div>
+</div>
+<p>These are the generic interpolants considered in (Albergo, Boffi, Vanden-Eijnden,
+<a class="reference external" href="https://www.jmlr.org/papers/v26/23-1605.html">JMLR 2025</a>). They are
+implemented by the <a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant" title="stix.core.interpolant.ContinuousInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousInterpolant</span></code></a> class.</p>
+<section id="sampling-ode-sde-and-the-fokkerplanck-equation">
+<h3>Sampling: ODE, SDE, and the Fokker–Planck equation<a class="headerlink" href="#sampling-ode-sde-and-the-fokkerplanck-equation" title="Link to this heading">¶</a></h3>
+<p>The marginals of an interpolant of the form above satisfy the Fokker–Planck
+equation</p>
+<div class="math-wrapper docutils container" id="equation-eq-fokker-planck">
+<div class="math notranslate nohighlight" id="equation-eq-fokker-planck">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-fokker-planck" title="Link to this equation">¶</a></span>\[\partial_t p_{t}(z) = -\nabla_{z}\cdot(p_{t}b_{t}),\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(b_t(z)\)</span> is the <em>marginal</em> velocity of the interpolant, defined as</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[b_t(z) = \mathbb{E}\bigl[\partial_t J_t(z_{\mathrm{src}}, z_{\mathrm{tgt}})
++ \dot\gamma_t\,\epsilon \mid z_t = z\bigr].\]</div>
+</div>
+<p>Define the score of the time-<span class="math notranslate nohighlight">\(t\)</span> marginal <span class="math notranslate nohighlight">\(s_t(z)\)</span> and the velocity
+field <span class="math notranslate nohighlight">\(v_t(z)\)</span> as</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+s_t(z) &amp;= \nabla_z \log p_t(z)\\
+v_t(z) &amp;= \mathbb{E}\bigl[\partial_{t} J_t(z_{\mathrm{src}}, z_{\mathrm{tgt}})
+\mid z_t = z\bigr]
+\end{aligned}.\end{split}\]</div>
+</div>
+<p>We have <span class="math notranslate nohighlight">\(s_t(z) = - \mathbb{E}\bigl[ \epsilon \mid z_t = z\bigr] / \gamma_t\)</span>,
+so that the velocity can be written</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[b_t(z) = v_t(z) - \gamma_t\dot\gamma_t\,s_t(z).\]</div>
+</div>
+<p>One can show that, for any non-negative stochasticity schedule <span class="math notranslate nohighlight">\(\lambda_t\)</span>,
+the process defined by the <strong>stochastic differential equation</strong> (SDE)</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathrm{d}z_t = \bigl(b_t(z_t) + \lambda_t\, s_t(z_t)\bigr)\,\mathrm{d}t
++ \sqrt{2\lambda_t}\,\mathrm{d}W_t\]</div>
+</div>
+<p>yields the same Fokker–Planck equation as the previous continuous interpolant.
+As a result, assuming it starts from the same initial distribution <span class="math notranslate nohighlight">\(p_{0}\)</span>,
+this process reproduces the <em>same</em> marginals <span class="math notranslate nohighlight">\(p_t\)</span> as the continuous
+interpolant.</p>
+<p>To produce samples from the target distribution, one can thus fit <span class="math notranslate nohighlight">\(b_t\)</span>
+and <span class="math notranslate nohighlight">\(s_t\)</span> and evolve samples from <span class="math notranslate nohighlight">\(p_{0}\)</span> using the above SDE.
+Taking <span class="math notranslate nohighlight">\(\lambda \equiv 0\)</span> turns the SDE into an ordinary differential
+equation (ODE) that only involves <span class="math notranslate nohighlight">\(b_t\)</span>, so one may choose not to fit
+<span class="math notranslate nohighlight">\(s_t\)</span> and sample with the ODE alone.</p>
+</section>
+<section id="training-conditional-velocity-and-score">
+<h3>Training: conditional velocity and score<a class="headerlink" href="#training-conditional-velocity-and-score" title="Link to this heading">¶</a></h3>
+<p>The marginal fields <span class="math notranslate nohighlight">\(b_t\)</span> and <span class="math notranslate nohighlight">\(s_t\)</span> are not available in closed
+form, but their <em>conditional</em> counterparts given a pair
+<span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span> and a noise sample <span class="math notranslate nohighlight">\(\epsilon\)</span>
+are. In fact, we have</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+b_t(z_t \mid z_{\mathrm{src}}, z_{\mathrm{tgt}})
+&amp;= \partial_t J_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}) + \dot\gamma_t\,\epsilon, \\
+s_t(z_t \mid z_{\mathrm{src}}, z_{\mathrm{tgt}})
+&amp;= -\epsilon / \gamma_t
+\end{aligned}.\end{split}\]</div>
+</div>
+<p>One can rely on these conditional quantities to fit the associated
+unconditional ones. For instance, to fit the velocity, one can minimize</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathcal{L}
+= \mathbb{E}
+\bigl\| \hat{b}_t(z_t) - b_t(z_t \mid z_{\mathrm{src}}, z_{\mathrm{tgt}}) \bigr\|^2,\]</div>
+</div>
+<p>where the expectation is taken over
+<span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\sim\pi\)</span>,
+<span class="math notranslate nohighlight">\(\epsilon\sim\mathcal{N}(0,I)\)</span> and <span class="math notranslate nohighlight">\(t\sim\mathcal{U}(0,1)\)</span>.
+Expanding and using the property of conditional expectation shows that</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathcal{L} = \mathbb{E}
+\bigl\| \hat{b}_t(z_t) - b_t(z_t) \bigr\|^2,\]</div>
+</div>
+<p>which is the desired unconditional objective. This method is also valid for
+<span class="math notranslate nohighlight">\(s_t\)</span> and <span class="math notranslate nohighlight">\(v_t\)</span>. Note that this approach is not unique, and other
+objectives might exist that allow one to estimate the quantities required for
+sampling, depending on the exact continuous interpolant considered.</p>
+</section>
+<section id="linear-continuous-interpolants">
+<h3>Linear continuous interpolants<a class="headerlink" href="#linear-continuous-interpolants" title="Link to this heading">¶</a></h3>
+<p>An important subclass of continuous interpolants are the <strong>linear continuous
+interpolants</strong> (<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.LinearInterpolant" title="stix.core.interpolant.LinearInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearInterpolant</span></code></a>) of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = \alpha_t z_{\mathrm{src}} + \beta_t z_{\mathrm{tgt}} + \gamma_t \epsilon,\]</div>
+</div>
+<p>or, for the one-sided case
+(<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant" title="stix.core.interpolant.OneSidedLinearStochasticInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedLinearStochasticInterpolant</span></code></a>),</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = \beta_t z_{\mathrm{tgt}} + \gamma_t \epsilon.\]</div>
+</div>
+<p>This class of interpolants encompasses many of the modern generative models,
+including Flow Matching
+(<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.FlowMatchingOneSidedInterpolant" title="stix.core.interpolant.FlowMatchingOneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowMatchingOneSidedInterpolant</span></code></a>,
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.FlowMatchingTwoSidedInterpolant" title="stix.core.interpolant.FlowMatchingTwoSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowMatchingTwoSidedInterpolant</span></code></a>,
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.StochasticFlowMatchingTwoSidedInterpolant" title="stix.core.interpolant.StochasticFlowMatchingTwoSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">StochasticFlowMatchingTwoSidedInterpolant</span></code></a>),
+diffusion models in the EDM framework
+(<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.VarianceExplodingDiffusionOneSidedInterpolant" title="stix.core.interpolant.VarianceExplodingDiffusionOneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarianceExplodingDiffusionOneSidedInterpolant</span></code></a>),
+and Bayesian Flow Networks
+(<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousBFNOneSidedInterpolant" title="stix.core.interpolant.ContinuousBFNOneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousBFNOneSidedInterpolant</span></code></a>,
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteBFNOneSidedInterpolant" title="stix.core.interpolant.DiscreteBFNOneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscreteBFNOneSidedInterpolant</span></code></a>). The one-sided
+linear path identifies <span class="math notranslate nohighlight">\(z_0\)</span> with <span class="math notranslate nohighlight">\(\epsilon\)</span>, which will matter when
+choosing a coupling.</p>
+</section>
+</section>
+<section id="discrete-interpolants">
+<span id="intro-discrete"></span><h2>Discrete interpolants<a class="headerlink" href="#discrete-interpolants" title="Link to this heading">¶</a></h2>
+<p>The interpolants above yield continuous interpolated states. We also implement
+a class of interpolants (<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant" title="stix.core.interpolant.DiscreteInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscreteInterpolant</span></code></a>)
+taking values in a discrete space, following the
+Discrete Flow Matching framework of (Gat et al.,
+<a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/f0d629a734b56a642701bba7bc8bb3ed-Abstract-Conference.html">NeurIPS 2024</a>).
+These interpolants produce interpolated variables in a discrete state space
+<span class="math notranslate nohighlight">\(\Sigma\)</span> with <span class="math notranslate nohighlight">\(K\)</span> elements, with conditional marginal probability
+paths of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[p_t(z_t \mid z_{\mathrm{src}}, z_{\mathrm{tgt}})
+= \sum_{j=1}^{M} \kappa^j_t\, w^j(z_t \mid z_{\mathrm{src}}, z_{\mathrm{tgt}}),\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(w^j(\cdot \mid z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span> are
+time-independent mixture conditional distributions on <span class="math notranslate nohighlight">\(\Sigma\)</span> and
+<span class="math notranslate nohighlight">\(\kappa_t = (\kappa^j_t)_{j=1}^{M}\)</span> is a <em>schedule</em> on the simplex
+<span class="math notranslate nohighlight">\(\Delta^{M-1}\)</span>, namely <span class="math notranslate nohighlight">\(\kappa^j_t\ge 0\)</span>,
+<span class="math notranslate nohighlight">\(\sum_j\kappa^j_t=1\)</span>.</p>
+<p>To obtain these marginals, we define the interpolant map as</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[I_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}, \epsilon) = s_J,
+\qquad
+s_J\sim w_J(\,\cdot\mid z_{\mathrm{src}}, z_{\mathrm{tgt}}).\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(J\sim\mathrm{Cat}(\kappa_t)\)</span>. Here <span class="math notranslate nohighlight">\(\epsilon\)</span> is used as a
+random seed to first sample <span class="math notranslate nohighlight">\(J\)</span>, and then sample <span class="math notranslate nohighlight">\(s_J\)</span> from
+<span class="math notranslate nohighlight">\(w_J\)</span>. This is achieved by splitting <span class="math notranslate nohighlight">\(\epsilon\)</span> into
+<span class="math notranslate nohighlight">\(\epsilon = (\epsilon_m, \epsilon_s)\)</span> with
+<span class="math notranslate nohighlight">\(\epsilon_m,\epsilon_s\sim\mathcal{U}[0,1)\)</span>, and using <span class="math notranslate nohighlight">\(\epsilon_m\)</span>,
+<span class="math notranslate nohighlight">\(\epsilon_s\)</span> to draw <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(s_J\)</span> by inverse CDF sampling.</p>
+<p>Conditionally on <span class="math notranslate nohighlight">\(\epsilon\)</span>, <span class="math notranslate nohighlight">\(z_t\)</span> is a point mass at <span class="math notranslate nohighlight">\(I_t\)</span>.
+Integrating <span class="math notranslate nohighlight">\(\epsilon\)</span> recovers the marginal paths above.</p>
+<section id="sampling-ctmc-and-probability-velocity">
+<h3>Sampling: CTMC and probability velocity<a class="headerlink" href="#sampling-ctmc-and-probability-velocity" title="Link to this heading">¶</a></h3>
+<p>Akin to the marginals of an SDE, which satisfy the Fokker–Planck equation
+<a class="reference internal" href="#equation-eq-fokker-planck">(1)</a>, the marginals <span class="math notranslate nohighlight">\(p_t(z)\)</span> associated with a CTMC
+satisfy a continuity equation that reads</p>
+<div class="math-wrapper docutils container" id="equation-eq-ctmc-continuity">
+<div class="math notranslate nohighlight" id="equation-eq-ctmc-continuity">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-ctmc-continuity" title="Link to this equation">¶</a></span>\[\partial_t p_{t}(z) = -\mathrm{div}_{z}(p_{t}u_{t}),\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(u_t\)</span> is the <em>probability velocity</em>. It is defined by</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_{t} (z\mid y) = \left(\partial_h p_{t+h\mid t}(z\mid y)\right)_{h=0}\]</div>
+</div>
+<p>for all <span class="math notranslate nohighlight">\(z, y \in \Sigma\)</span>, where</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[p_{t+h\mid t}(z\mid y) = \mathbb{P}\left[z_{t+h} = z\mid z_t = y\right]\]</div>
+</div>
+<p>are the <em>transition probabilities</em>, and <span class="math notranslate nohighlight">\(\mathrm{div}_{z}\)</span> is the <em>discrete divergence operator</em> that reads</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathrm{div}_{z}(p_t u_t) = \sum_{y\in\Sigma}
+(u_t(y\mid z) p_t(z) - u_t(z\mid y) p_t(y)).\]</div>
+</div>
+<p>Using the fact that the transition probabilities sum to 1, we have
+<span class="math notranslate nohighlight">\(\sum_{y\in\Sigma} p_{t+h\mid t}(y\mid z) = 1\)</span> for all <span class="math notranslate nohighlight">\(z \in \Sigma\)</span>,
+so that the continuity equation reduces to</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\partial_t p_{t}(z) = \sum_{y\in\Sigma}u_t(z\mid y)p_t(y)\,.\]</div>
+</div>
+<p>Similar to the continuous case above, assuming the initial distributions <span class="math notranslate nohighlight">\(p_0\)</span>
+are the same, we can thus build a CTMC process reproducing the desired
+marginals by learning an approximation to the probability velocity <span class="math notranslate nohighlight">\(u_t\)</span>.</p>
+<p>Then, at sampling time we can simulate the process by taking stochastic jumps between times
+<span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+\delta t\)</span> according to the Euler discretisation</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_{t+\delta t} \sim \delta_{z_t}(\cdot) + \delta t\, u_t(\cdot \mid z_t),\]</div>
+</div>
+<p>i.e.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}z_{t + \delta t} =
+\begin{cases}
+   z_t &amp; \text{w.p. } 1 - \delta t \sum_{y \neq z_t} u_t(y \mid z_t), \\
+   y \neq z_t &amp; \text{w.p. } \delta t\, u_t(y \mid z_t).
+\end{cases}\end{split}\]</div>
+</div>
+<p>Note that for the right-hand side to be a proper probability distribution
+for a small enough <span class="math notranslate nohighlight">\(\delta t\)</span>, the probability velocity must satisfy
+the conditions</p>
+<div class="math-wrapper docutils container" id="equation-eq-ctmc-positivity">
+<div class="math notranslate nohighlight" id="equation-eq-ctmc-positivity">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-ctmc-positivity" title="Link to this equation">¶</a></span>\[\sum_{z\in\Sigma} u_t(z\mid y) = 0
+\quad \text{and} \quad
+u_t(z\mid y) \geq 0 \quad \forall z\neq y.\]</div>
+</div>
+<p>The first condition ensures that the probabilities sum to 1, and the
+second that they are non-negative.</p>
+</section>
+<section id="training-conditional-probability-velocity-and-posterior">
+<h3>Training: conditional probability velocity and posterior<a class="headerlink" href="#training-conditional-probability-velocity-and-posterior" title="Link to this heading">¶</a></h3>
+<p>As previously, the probability velocity is not available in closed form, but
+one can use its <em>conditional</em> counterpart given
+<span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>. Following (Gat et al.,
+<a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/f0d629a734b56a642701bba7bc8bb3ed-Abstract-Conference.html">NeurIPS 2024</a>), for the previous interpolant
+one can write the conditional probability velocity as</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_t(z \mid y, (z_{\mathrm{src}}, z_{\mathrm{tgt}}))
+= \sum_{j=1}^{M} a^j_t\, w^j(z \mid  (z_{\mathrm{src}}, z_{\mathrm{tgt}}))
++ b_t\,\delta_y(z),\]</div>
+</div>
+<p>with <span class="math notranslate nohighlight">\(a^j_t = \dot\kappa^j_t - \kappa^j_t\,\dot\kappa^\ell_t / \kappa^\ell_t\)</span>,
+<span class="math notranslate nohighlight">\(b_t = \dot\kappa^\ell_t / \kappa^\ell_t\)</span>, and
+<span class="math notranslate nohighlight">\(\ell = \arg\min_j \dot\kappa^j_t / \kappa^j_t\)</span>.</p>
+<p>In fact, injecting this conditional probability velocity into the
+continuity equation <a class="reference internal" href="#equation-eq-ctmc-continuity">(2)</a> yields the correct time
+derivative for the conditional marginals
+<span class="math notranslate nohighlight">\(p_t(z\mid z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>. Note that the
+terms involving the <span class="math notranslate nohighlight">\(\ell\)</span> index in the coefficients
+<span class="math notranslate nohighlight">\(a_t\)</span> and <span class="math notranslate nohighlight">\(b_t\)</span> are chosen so as to ensure the constraints
+in <a class="reference internal" href="#equation-eq-ctmc-positivity">(3)</a>.</p>
+<p>One can show that</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_t(z \mid y) = \sum_{(z_{\mathrm{src}}, z_{\mathrm{tgt}})\in\Sigma^2}
+u_t(z \mid y, (z_{\mathrm{src}}, z_{\mathrm{tgt}}))
+p_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}\mid y)\,.\]</div>
+</div>
+<p>For the considered interpolants, this yields</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_t(z \mid y) = \sum_{j=1}^{M} a^j_t\, \hat w^j_t(z \mid  y) + b_t\,\delta_y(z)\]</div>
+</div>
+<p>where</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\hat w^j_t = \sum_{(z_{\mathrm{src}}, z_{\mathrm{tgt}})\in\Sigma^2}
+w^j(z \mid  (z_{\mathrm{src}}, z_{\mathrm{tgt}}))
+p_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}\mid y)\]</div>
+</div>
+<p>are the posteriors of the <span class="math notranslate nohighlight">\(w^j\)</span> given <span class="math notranslate nohighlight">\(z_t = y\)</span>.</p>
+<p>As in the continuous case, one can thus rely on the conditional velocity to
+learn <span class="math notranslate nohighlight">\(u_t\)</span>. In practice, since <span class="math notranslate nohighlight">\(\Sigma\)</span> is finite, one can also
+directly fit the posterior distribution
+<span class="math notranslate nohighlight">\(p_t(z_{\mathrm{src}}, z_{\mathrm{tgt}}\mid z)\)</span> and build the
+<span class="math notranslate nohighlight">\(\hat w^j_t\)</span> to derive an estimator of <span class="math notranslate nohighlight">\(u_t(z \mid y)\)</span>.</p>
+</section>
+<section id="time-reversal-and-corrector-sampling">
+<h3>Time reversal and corrector sampling<a class="headerlink" href="#time-reversal-and-corrector-sampling" title="Link to this heading">¶</a></h3>
+<p>The continuity equation <a class="reference internal" href="#equation-eq-ctmc-continuity">(2)</a> constrains the divergence
+<span class="math notranslate nohighlight">\(\mathrm{div}_{z}(p_t u_t)\)</span>, not the probability velocity itself. Just as
+the continuous case admits a whole family of processes sharing the same
+marginals (indexed by the stochasticity schedule <span class="math notranslate nohighlight">\(\lambda_t\)</span>), for any <span class="math notranslate nohighlight">\(\eta_t\)</span> such that
+<span class="math notranslate nohighlight">\(\mathrm{div}_{z}(p_t\eta_t) = 0\)</span>, <span class="math notranslate nohighlight">\(u_t + \eta_t\)</span> also reproduces
+the marginals <span class="math notranslate nohighlight">\(p_t\)</span>.</p>
+<p>A canonical example is given by the <strong>time-reversed</strong> velocity
+<span class="math notranslate nohighlight">\(\check u_t\)</span>, which walks the same path of marginals with <em>decreasing</em>
+<span class="math notranslate nohighlight">\(t\)</span>. For the mixture paths above it is obtained by substituting
+<span class="math notranslate nohighlight">\(\dot\kappa_t \to -\dot\kappa_t\)</span> in the coefficients of the previous
+section,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\check u_t(z \mid y) = \sum_{j=1}^{M} \tilde a^j_t\, \hat w^j_t(z \mid y)
++ \tilde b_t\,\delta_y(z),\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\((\tilde a_t, \tilde b_t)\)</span> are the coefficients
+<span class="math notranslate nohighlight">\((a_t, b_t)\)</span> evaluated with <span class="math notranslate nohighlight">\(\dot\kappa_t\)</span> replaced by
+<span class="math notranslate nohighlight">\(-\dot\kappa_t\)</span>. The substitution generally moves the index
+<span class="math notranslate nohighlight">\(\ell = \arg\min_j \dot\kappa^j_t / \kappa^j_t\)</span>, which is precisely what
+keeps the constraints <a class="reference internal" href="#equation-eq-ctmc-positivity">(3)</a> satisfied in the reversed
+direction. By construction we have</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathrm{div}_{z}(p_t \check u_t) = -\mathrm{div}_{z}(p_t \hat u_t)
+= \partial_t p_{t},\]</div>
+</div>
+<p>so <span class="math notranslate nohighlight">\(\hat u_t + \check u_t\)</span> is divergence-free against <span class="math notranslate nohighlight">\(p_t\)</span>, and
+the whole family</p>
+<div class="math-wrapper docutils container" id="equation-eq-ctmc-corrector">
+<div class="math notranslate nohighlight" id="equation-eq-ctmc-corrector">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-ctmc-corrector" title="Link to this equation">¶</a></span>\[\bar u_t = (1 + \lambda_t)\,\hat u_t + \lambda_t\,\check u_t,
+\qquad \lambda_t \geq 0,\]</div>
+</div>
+<p>reproduces the marginals <span class="math notranslate nohighlight">\(p_t\)</span>. Here <span class="math notranslate nohighlight">\(\lambda_t\)</span> plays exactly the same role it
+plays for the SDE: <span class="math notranslate nohighlight">\(\lambda_t = 0\)</span> is the plain
+generative chain, while <span class="math notranslate nohighlight">\(\lambda_t &gt; 0\)</span> adds a <strong>corrector</strong> that undoes
+part of the transport and lets the forward term decide again. For a masked
+diffusion path, for instance, <span class="math notranslate nohighlight">\(\check u_t\)</span> sends already-revealed states
+back onto the mask symbol, so <span class="math notranslate nohighlight">\(\lambda_t &gt; 0\)</span> is the familiar re-masking
+corrector. Swapping the two weights, i.e.
+<span class="math notranslate nohighlight">\(\bar u_t = \lambda_t\,\hat u_t + (1 + \lambda_t)\,\check u_t\)</span>, runs the
+chain backwards instead, transporting the target back onto the source.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">stix</span></code>, the reversed velocity is produced by the <code class="docutils literal notranslate"><span class="pre">backward=True</span></code>
+argument of
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.rates_from_mixture_distributions" title="stix.core.interpolant.DiscreteInterpolant.rates_from_mixture_distributions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rates_from_mixture_distributions()</span></code></a>,
+and of the <code class="docutils literal notranslate"><span class="pre">rates_from_target_posterior</span></code> methods of the standard discrete
+interpolants. Either direction comes out as valid transition rates, and both
+are carried by the <a class="reference internal" href="api_reference/core/generator.html#stix.core.generator.TransitionRates" title="stix.core.generator.TransitionRates"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransitionRates</span></code></a> generator: its
+<code class="docutils literal notranslate"><span class="pre">forward_rates</span></code> hold <span class="math notranslate nohighlight">\(\hat u_t\)</span> and its <code class="docutils literal notranslate"><span class="pre">backward_rates</span></code> hold
+<span class="math notranslate nohighlight">\(\check u_t\)</span>, so a solver assembles <a class="reference internal" href="#equation-eq-ctmc-corrector">(4)</a> as written.
+The weight is the <code class="docutils literal notranslate"><span class="pre">stochasticity_scale</span></code> field of
+<a class="reference internal" href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolverConfig" title="stix.sampling.solver_manual.ManualSolverConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManualSolverConfig</span></code></a> — the very field that
+carries <span class="math notranslate nohighlight">\(\lambda_t\)</span> for a continuous SDE — which defaults to
+<span class="math notranslate nohighlight">\(\lambda_t \equiv 0\)</span>.</p>
+<p>Finally, both the continuous and the discrete processes can be integrated in
+either direction, as selected by the <a class="reference internal" href="api_reference/sampling/utils.html#stix.sampling.utils.Direction" title="stix.sampling.utils.Direction"><code class="xref py py-class docutils literal notranslate"><span class="pre">Direction</span></code></a>
+field of the solver configurations. On
+<a class="reference internal" href="api_reference/sampling/utils.html#stix.sampling.utils.Direction.REVERSE" title="stix.sampling.utils.Direction.REVERSE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">REVERSE</span></code></a>, an S/ODE is integrated from
+<span class="math notranslate nohighlight">\(t=1\)</span> down to <span class="math notranslate nohighlight">\(t=0\)</span> with the sign of its score term flipped, and a
+CTMC swaps the two weights of <a class="reference internal" href="#equation-eq-ctmc-corrector">(4)</a>, so that the default
+<span class="math notranslate nohighlight">\(\lambda_t \equiv 0\)</span> becomes the pure reversed chain
+<span class="math notranslate nohighlight">\(\bar u_t = \check u_t\)</span>.</p>
+</section>
+</section>
+<section id="approximate-endpoints-and-sampling-time">
+<span id="intro-endpoints"></span><h2>Approximate endpoints and sampling time<a class="headerlink" href="#approximate-endpoints-and-sampling-time" title="Link to this heading">¶</a></h2>
+<p>For two-sided interpolants, the identification <span class="math notranslate nohighlight">\(z_0 = z_{\mathrm{src}}\)</span>,
+<span class="math notranslate nohighlight">\(z_1 = z_{\mathrm{tgt}}\)</span> is the intended design, but in a generic
+implementation it may hold only approximately. For instance, one can consider a
+linear two-sided interpolant of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = t z_{\mathrm{tgt}} + (1-t) z_{\mathrm{src}} + \gamma_t \epsilon,
+\quad \epsilon\sim\mathcal{N}(0,1)\]</div>
+</div>
+<p>with <span class="math notranslate nohighlight">\(\gamma_0\)</span> and <span class="math notranslate nohighlight">\(\gamma_1\)</span> very small but non-zero, leaving a
+small residual noise at both endpoints. In order to avoid confusion, we keep
+distinct notations in the library, using <span class="math notranslate nohighlight">\(z_{\mathrm{src}}\)</span> and
+<span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span> for the <em>source</em> and <em>target</em> variables, and
+<span class="math notranslate nohighlight">\(z_0\)</span> and <span class="math notranslate nohighlight">\(z_1\)</span> for the <em>initial</em> and <em>final</em> variables.</p>
+<p>One-sided interpolants use no source distribution, so their initial state
+<span class="math notranslate nohighlight">\(z_0\)</span> should typically be determined by the noise <span class="math notranslate nohighlight">\(\epsilon\)</span>. Again,
+this might not always be true in practice. As an example, the one-sided
+interpolant corresponding to a variance exploding (VE) diffusion model
+(<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.VarianceExplodingDiffusionOneSidedInterpolant" title="stix.core.interpolant.VarianceExplodingDiffusionOneSidedInterpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarianceExplodingDiffusionOneSidedInterpolant</span></code></a>)
+reads</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = z_{\mathrm{tgt}} + \sigma_t\epsilon, \quad \epsilon\sim\mathcal{N}(0,1),
+\quad \sigma_1=0,\quad \sigma_0 = \sigma_{\mathrm{max}}\gg 1,\]</div>
+</div>
+<p>so that the initial state <span class="math notranslate nohighlight">\(z_{0}\)</span> depends on <span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span>,
+although it should be largely dominated by the noise term
+<span class="math notranslate nohighlight">\(\sigma_{\mathrm{max}}\epsilon\)</span>.</p>
+<p>This kind of residual dependency on the target variable is problematic at
+sampling time. Because <span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span> is unavailable, evaluating
+<span class="math notranslate nohighlight">\(z_{0}\)</span> using <span class="math notranslate nohighlight">\(I_{t=0}\)</span> would require passing an arbitrary value for
+<span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span>.</p>
+<p>To avoid this arbitrary choice, every
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant" title="stix.core.interpolant.Interpolant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Interpolant</span></code></a> implements a
+<a class="reference internal" href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.sample_initial_state" title="stix.core.interpolant.Interpolant.sample_initial_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sample_initial_state()</span></code></a> method that
+maps the quantities available then — <span class="math notranslate nohighlight">\(z_{\mathrm{src}}\)</span> (or none, for a
+one-sided path) and <span class="math notranslate nohighlight">\(\epsilon\)</span> — onto the sampling-time law of
+<span class="math notranslate nohighlight">\(z_0\)</span>, without using <span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span>.</p>
+</section>
+<section id="source-and-target-distributions-coupling">
+<span id="intro-coupling"></span><h2>Source and target distributions, coupling<a class="headerlink" href="#source-and-target-distributions-coupling" title="Link to this heading">¶</a></h2>
+<p>Since the target (and sometimes the source) distribution is not available in
+closed form, training relies on sampling <span class="math notranslate nohighlight">\((x_{\mathrm{src}}, x_{\mathrm{tgt}})\)</span>
+pairs from a dataset and embedding them as
+<span class="math notranslate nohighlight">\((z_{\mathrm{src}}, z_{\mathrm{tgt}})\)</span>.</p>
+<p>In the interpolant framework one is free to choose the joint distribution of
+the pair, <span class="math notranslate nohighlight">\(\pi\)</span>, subject only to the correct marginals. Different
+couplings change the geometry of the learned trajectories and can substantially
+reduce the number of solver steps needed at sampling time, without changing
+<span class="math notranslate nohighlight">\(p_{\mathrm{src}}\)</span> or <span class="math notranslate nohighlight">\(p_{\mathrm{tgt}}\)</span>.</p>
+<p>In practice, the sampling from a joint distribution <span class="math notranslate nohighlight">\(\pi\)</span> is simulated by
+coupling the source and target variables to introduce specific correlations.
+This can be done at the level of the dataset itself, in which case the pairs
+drawn from the dataset are already correlated. We call this approach an
+<strong>offline coupling</strong>.</p>
+<p>Another approach is to introduce the correlations on the fly at the level of
+each batch, a method we call <strong>online coupling</strong>. In <code class="docutils literal notranslate"><span class="pre">stix</span></code>, online coupling
+can be implemented using a <a class="reference internal" href="api_reference/core/coupling.html#stix.core.coupling.Coupling" title="stix.core.coupling.Coupling"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coupling</span></code></a> object. At
+training time, the <code class="docutils literal notranslate"><span class="pre">Coupling</span></code> receives a batch of raw and embedded pairs and
+returns correlated re-coupled pairs.</p>
+<p>Couplings act on <strong>source and target only</strong>. In particular, <em>they cannot be
+used with one-sided interpolants</em>, for which no source variable is provided.
+Following the discussion of the previous paragraph, one could consider using
+couplings acting on the target variable <span class="math notranslate nohighlight">\(z_\mathrm{tgt}\)</span> and the noise
+<span class="math notranslate nohighlight">\(\epsilon\)</span>. However, this would break the central assumption that
+<span class="math notranslate nohighlight">\(\epsilon\)</span> is independent of <span class="math notranslate nohighlight">\(z_\mathrm{tgt}\)</span>. This assumption is
+required to derive the formula</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[s_t = -\epsilon / \gamma_t\]</div>
+</div>
+<p>that relates the continuous conditional score and the noise. Correlating
+<span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(z_\mathrm{tgt}\)</span> would thus break SDE sampling
+(although ODE sampling would be fine).</p>
+<p>Instead of coupling the target variable with the noise, one must thus turn the
+one-sided interpolant into an equivalent two-sided one. For instance, a linear
+one-sided interpolant of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = \beta_t z_{\mathrm{tgt}} + \gamma_t \epsilon,
+\quad \epsilon\sim\mathcal{N}(0,1)\]</div>
+</div>
+<p>can be replaced by a two-sided one of the form</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[z_t = \beta_t z_{\mathrm{tgt}} + \alpha_t  z_{\mathrm{src}} + \sigma_t \epsilon,
+\quad \epsilon\sim\mathcal{N}(0,1),\]</div>
+</div>
+<p>with <span class="math notranslate nohighlight">\(\gamma_t^2 = \alpha_t^2+\sigma_t^2\)</span> and
+<span class="math notranslate nohighlight">\(z_{\mathrm{src}}\sim\mathcal{N}(0,1)\)</span>. A specific choice of the
+<span class="math notranslate nohighlight">\(\alpha_t\)</span> and <span class="math notranslate nohighlight">\(\sigma_t\)</span> schedules then corresponds to a specific
+decomposition of the initial variable <span class="math notranslate nohighlight">\(z_0\)</span> into a part
+<span class="math notranslate nohighlight">\(\alpha_0  z_{\mathrm{src}}\)</span> that can be correlated to
+<span class="math notranslate nohighlight">\(z_{\mathrm{tgt}}\)</span> and an independent part <span class="math notranslate nohighlight">\(\sigma_0 \epsilon\)</span> that
+is used to build the score <span class="math notranslate nohighlight">\(s_t = -\epsilon/\sigma_t\)</span>.</p>
+<p>Implementing this requires being able to specify the marginal distribution of
+<span class="math notranslate nohighlight">\(z_{\mathrm{src}}\)</span> directly in the embedded space. When the embedding is
+non-trivial, defining this distribution as the image of a distribution of the
+raw source <span class="math notranslate nohighlight">\(x_{\mathrm{src}}\)</span> can be difficult. To avoid this, we allow
+generating source variables in embedded space on the fly. This is done by
+attaching an <code class="docutils literal notranslate"><span class="pre">embedded_source_prior</span></code> method to the
+<a class="reference internal" href="api_reference/core/modality.html#stix.core.modality.Modality" title="stix.core.modality.Modality"><code class="xref py py-class docutils literal notranslate"><span class="pre">Modality</span></code></a> object. After embedding of the available
+raw source variables <span class="math notranslate nohighlight">\(x_{\mathrm{src}}\)</span>, missing embedded source
+<span class="math notranslate nohighlight">\(z_{\mathrm{src}}\)</span> are generated using the provided
+<code class="docutils literal notranslate"><span class="pre">embedded_source_prior</span></code>. At training time, this occurs <em>before</em> any coupling,
+so the generated source can be used for online coupling.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="installation/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Installation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#the-stochastic-interpolants-framework">The stochastic interpolants framework</a></li>
+<li><a class="reference internal" href="#multi-modal-setups-and-embeddings">Multi-modal setups and embeddings</a></li>
+<li><a class="reference internal" href="#one-and-two-sided-interpolants">One- and two-sided interpolants</a></li>
+<li><a class="reference internal" href="#continuous-interpolants">Continuous interpolants</a><ul>
+<li><a class="reference internal" href="#sampling-ode-sde-and-the-fokkerplanck-equation">Sampling: ODE, SDE, and the Fokker–Planck equation</a></li>
+<li><a class="reference internal" href="#training-conditional-velocity-and-score">Training: conditional velocity and score</a></li>
+<li><a class="reference internal" href="#linear-continuous-interpolants">Linear continuous interpolants</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discrete-interpolants">Discrete interpolants</a><ul>
+<li><a class="reference internal" href="#sampling-ctmc-and-probability-velocity">Sampling: CTMC and probability velocity</a></li>
+<li><a class="reference internal" href="#training-conditional-probability-velocity-and-posterior">Training: conditional probability velocity and posterior</a></li>
+<li><a class="reference internal" href="#time-reversal-and-corrector-sampling">Time reversal and corrector sampling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#approximate-endpoints-and-sampling-time">Approximate endpoints and sampling time</a></li>
+<li><a class="reference internal" href="#source-and-target-distributions-coupling">Source and target distributions, coupling</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    </body>
+</html>

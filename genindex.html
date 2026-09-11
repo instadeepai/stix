@@ -1,0 +1,1264 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#"><link rel="search" title="Search" href="search.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 --><title>Index - STIX</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">STIX</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">STIX</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_reference/index.html">Overview</a><input aria-label="Toggle navigation of Overview" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/core/index.html">Core</a><input aria-label="Toggle navigation of Core" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/interpolant.html">Interpolants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/embedder.html">Embedders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/coupling.html">Coupling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/criterion.html">Criteria</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/embedded_source_prior.html">Embedded source prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/modality.html">Modality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/gen_model.html">Generative models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/generator.html">Sampling generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/core/utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/nn/index.html">Neural networks</a><input aria-label="Toggle navigation of Neural networks" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/network.html">Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/dit.html">DiT components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/context.html">Context encoders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/nn/layers.html">Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/training/index.html">Training</a><input aria-label="Toggle navigation of Training" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/training_loop.html">Training loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/loss_pipeline.html">Loss pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/time_sampler.html">Time samplers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/training/io_handling.html">Checkpointing and logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/sampling/index.html">Sampling</a><input aria-label="Toggle navigation of Sampling" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/solver.html">Adaptive solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/solver_manual.html">Manual solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/guidance.html">Guidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/steps.html">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api_reference/sampling/utils.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_reference/typing/index.html">Typing</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+</section>
+<section id="_" class="genindex-section">
+  <h2>_</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/coupling.html#stix.core.coupling.Coupling.__call__">__call__() (stix.core.coupling.Coupling method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/embedded_source_prior.html#stix.core.embedded_source_prior.EmbeddedSourcePrior.__call__">(stix.core.embedded_source_prior.EmbeddedSourcePrior method)</a>
+</li>
+          <li><a href="api_reference/core/criterion.html#stix.core.loss.Criterion.__call__">(stix.core.loss.Criterion method)</a>
+</li>
+          <li><a href="api_reference/core/criterion.html#stix.core.loss.CrossEntropyCriterion.__call__">(stix.core.loss.CrossEntropyCriterion method)</a>
+</li>
+          <li><a href="api_reference/core/criterion.html#stix.core.loss.MSECriterion.__call__">(stix.core.loss.MSECriterion method)</a>
+</li>
+          <li><a href="api_reference/nn/dit.html#stix.nn.DiTBackbone.__call__">(stix.nn.DiTBackbone method)</a>
+</li>
+          <li><a href="api_reference/nn/dit.html#stix.nn.DiTDecoder.__call__">(stix.nn.DiTDecoder method)</a>
+</li>
+          <li><a href="api_reference/nn/dit.html#stix.nn.DiTEncoder.__call__">(stix.nn.DiTEncoder method)</a>
+</li>
+          <li><a href="api_reference/nn/network.html#stix.nn.EncoderBackboneDecoderNetwork.__call__">(stix.nn.EncoderBackboneDecoderNetwork method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.AdaptiveLayerNorm.__call__">(stix.nn.layers.AdaptiveLayerNorm method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.MultiHeadSelfAttention.__call__">(stix.nn.layers.MultiHeadSelfAttention method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.RegressionHead.__call__">(stix.nn.layers.RegressionHead method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.SinusoidalFourierFeatures.__call__">(stix.nn.layers.SinusoidalFourierFeatures method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.SwiGLUFeedForward.__call__">(stix.nn.layers.SwiGLUFeedForward method)</a>
+</li>
+          <li><a href="api_reference/nn/layers.html#stix.nn.layers.TransformerBlock.__call__">(stix.nn.layers.TransformerBlock method)</a>
+</li>
+          <li><a href="api_reference/nn/network.html#stix.nn.MultiHeadDecoder.__call__">(stix.nn.MultiHeadDecoder method)</a>
+</li>
+          <li><a href="api_reference/nn/network.html#stix.nn.Network.__call__">(stix.nn.Network method)</a>
+</li>
+          <li><a href="api_reference/nn/context.html#stix.nn.SumContextEncoder.__call__">(stix.nn.SumContextEncoder method)</a>
+</li>
+          <li><a href="api_reference/nn/dit.html#stix.nn.TimeNoiseContextEncoder.__call__">(stix.nn.TimeNoiseContextEncoder method)</a>
+</li>
+          <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.GuidanceFn.__call__">(stix.sampling.guidance.GuidanceFn method)</a>
+</li>
+          <li><a href="api_reference/sampling/solver.html#stix.sampling.solver.Solver.__call__">(stix.sampling.solver.Solver method)</a>
+</li>
+          <li><a href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolver.__call__">(stix.sampling.solver_manual.ManualSolver method)</a>
+</li>
+          <li><a href="api_reference/training/loss_pipeline.html#stix.training.loss_pipeline.LossPipeline.__call__">(stix.training.loss_pipeline.LossPipeline method)</a>
+</li>
+          <li><a href="api_reference/training/time_sampler.html#stix.training.time_sampler.TimeSampler.__call__">(stix.training.time_sampler.TimeSampler method)</a>
+</li>
+          <li><a href="api_reference/training/time_sampler.html#stix.training.time_sampler.UniformTimeSampler.__call__">(stix.training.time_sampler.UniformTimeSampler method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.AdaptiveLayerNorm">AdaptiveLayerNorm (class in stix.nn.layers)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.assert_compatible">assert_compatible() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.assert_fields_set">assert_fields_set() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.assert_num_categories_set_on_discrete_modalities">assert_num_categories_set_on_discrete_modalities() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.attach_logger">attach_logger() (stix.training.training_io_handler.TrainingIOHandler method)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.attn_mask">attn_mask (stix.typing.data.Batch attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.TransitionRates.backward_rates">backward_rates (stix.core.generator.TransitionRates attribute)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch">Batch (class in stix.typing.data)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.best_eval_loss">best_eval_loss (stix.training.training_loop.TrainingLoop attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.best_eval_step">best_eval_step (stix.training.training_loop.TrainingLoop attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.BEST_MODEL">BEST_MODEL (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.best_params">best_params (stix.training.training_loop.TrainingLoop property)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.best_step">best_step() (stix.training.checkpointer.Checkpointer method)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.broadcast">broadcast() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/utils.html#stix.core.utils.check_gamma_is_not_zero">check_gamma_is_not_zero() (in module stix.core.utils)</a>
+</li>
+        <li><a href="api_reference/sampling/utils.html#stix.sampling.utils.check_scale_is_non_negative">check_scale_is_non_negative() (in module stix.sampling.utils)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.checkpoint_dir">checkpoint_dir (stix.training.checkpointer.CheckpointerConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.checkpoint_dir">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer">Checkpointer (class in stix.training.checkpointer)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig">CheckpointerConfig (class in stix.training.checkpointer)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.CheckpointRestorationError">CheckpointRestorationError</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.CLEANUP_AFTER_CKPT_RESTORATION">CLEANUP_AFTER_CKPT_RESTORATION (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.clear_previous_checkpoints">clear_previous_checkpoints (stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.Config">Config (stix.training.checkpointer.Checkpointer attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.Config">(stix.training.training_io_handler.TrainingIOHandler attribute)</a>
+</li>
+          <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.Config">(stix.training.training_loop.TrainingLoop attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.context_data">context_data (stix.typing.data.Batch attribute)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig.context_dim">context_dim (stix.nn.NetworkDimsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.context_mask">context_mask (stix.typing.data.Batch attribute)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousBFNOneSidedInterpolant">ContinuousBFNOneSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousDeterministicInterpolant">ContinuousDeterministicInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant">ContinuousInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousOneSidedStochasticInterpolant">ContinuousOneSidedStochasticInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousStochasticInterpolant">ContinuousStochasticInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_loggers.convert_mse_to_rmse_in_logs">convert_mse_to_rmse_in_logs() (in module stix.training.training_loggers)</a>
+</li>
+        <li><a href="api_reference/core/coupling.html#stix.core.coupling.Coupling">Coupling (class in stix.core.coupling)</a>
+</li>
+        <li><a href="api_reference/core/criterion.html#stix.core.loss.Criterion">Criterion (class in stix.core.loss)</a>
+</li>
+        <li><a href="api_reference/core/criterion.html#stix.core.loss.CrossEntropyCriterion">CrossEntropyCriterion (class in stix.core.loss)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.ctmc_euler_step">ctmc_euler_step() (in module stix.sampling.steps)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.DIFFUSION_FNS">DIFFUSION_FNS (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/utils.html#stix.sampling.utils.Direction">Direction (class in stix.sampling.utils)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteBFNOneSidedInterpolant">DiscreteBFNOneSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant">DiscreteInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/nn/dit.html#stix.nn.DiTBackbone">DiTBackbone (class in stix.nn)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/nn/dit.html#stix.nn.DiTDecoder">DiTDecoder (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/nn/dit.html#stix.nn.DiTEncoder">DiTEncoder (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.draw_mixing_index">draw_mixing_index() (stix.core.interpolant.DiscreteInterpolant method)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.DRIFT_FNS">DRIFT_FNS (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig.dtype">dtype (stix.nn.NetworkDimsConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.ema_decay">ema_decay (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.ema_decay">(stix.training.training_state.TrainingState attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.ema_model">ema_model (stix.training.training_loop.TrainingLoop property)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.ema_params">ema_params (stix.training.training_state.TrainingState attribute)</a>
+</li>
+        <li><a href="api_reference/core/embedded_source_prior.html#stix.core.embedded_source_prior.EmbeddedSourcePrior">EmbeddedSourcePrior (class in stix.core.embedded_source_prior)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair">EmbeddedSourceTargetPair (class in stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.EmbeddedVar">EmbeddedVar (in module stix.typing.variables)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.Embedder">Embedder (class in stix.core.embedder)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig.embedding_dim">embedding_dim (stix.nn.NetworkDimsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.enable_async_checkpointing">enable_async_checkpointing (stix.training.checkpointer.CheckpointerConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.enable_async_checkpointing">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/nn/network.html#stix.nn.EncoderBackboneDecoderNetwork">EncoderBackboneDecoderNetwork (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.eval_every_n_steps">eval_every_n_steps (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.EVAL_METRICS">EVAL_METRICS (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig.ffn_hidden_dim">ffn_hidden_dim (stix.nn.NetworkDimsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.FlowMatchingOneSidedInterpolant">FlowMatchingOneSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.FlowMatchingTwoSidedInterpolant">FlowMatchingTwoSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/sampling/utils.html#stix.sampling.utils.Direction.FORWARD">FORWARD (stix.sampling.utils.Direction attribute)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.TransitionRates.forward_rates">forward_rates (stix.core.generator.TransitionRates attribute)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.from_batch">from_batch() (stix.core.modality.ModalityRegistry class method)</a>
+</li>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.LearnedDiscreteEmbedder.from_embeddings_to_logits">from_embeddings_to_logits() (stix.core.embedder.LearnedDiscreteEmbedder method)</a>
+</li>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.LearnedDiscreteEmbedder.from_embeddings_to_probs">from_embeddings_to_probs() (stix.core.embedder.LearnedDiscreteEmbedder method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.Embedder.from_embeddings_to_raw">from_embeddings_to_raw() (stix.core.embedder.Embedder method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.IdentityEmbedder.from_embeddings_to_raw">(stix.core.embedder.IdentityEmbedder method)</a>
+</li>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.LearnedDiscreteEmbedder.from_embeddings_to_raw">(stix.core.embedder.LearnedDiscreteEmbedder method)</a>
+</li>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.OneHotDiscreteEmbedder.from_embeddings_to_raw">(stix.core.embedder.OneHotDiscreteEmbedder method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.Embedder.from_raw_to_embeddings">from_raw_to_embeddings() (stix.core.embedder.Embedder method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.IdentityEmbedder.from_raw_to_embeddings">(stix.core.embedder.IdentityEmbedder method)</a>
+</li>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.LearnedDiscreteEmbedder.from_raw_to_embeddings">(stix.core.embedder.LearnedDiscreteEmbedder method)</a>
+</li>
+          <li><a href="api_reference/core/embedder.html#stix.core.embedder.OneHotDiscreteEmbedder.from_raw_to_embeddings">(stix.core.embedder.OneHotDiscreteEmbedder method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel">GenerativeModel (class in stix.core.gen_model)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.Generator">Generator (class in stix.core.generator)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousDeterministicInterpolant.generator_type">generator_type (stix.core.interpolant.ContinuousDeterministicInterpolant attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousStochasticInterpolant.generator_type">(stix.core.interpolant.ContinuousStochasticInterpolant attribute)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.generator_type">(stix.core.interpolant.DiscreteInterpolant attribute)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.generator_type">(stix.core.interpolant.Interpolant attribute)</a>
+</li>
+          <li><a href="api_reference/core/modality.html#stix.core.modality.Modality.generator_type">(stix.core.modality.Modality property)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.get_batch_size">get_batch_size() (in module stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.get_classifier_free_guidance_generator">get_classifier_free_guidance_generator() (in module stix.sampling.guidance)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.get_conditional_rates">get_conditional_rates() (stix.core.interpolant.DiscreteInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousStochasticInterpolant.get_conditional_score">get_conditional_score() (stix.core.interpolant.ContinuousStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant.get_conditional_velocity">get_conditional_velocity() (stix.core.interpolant.ContinuousInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant.get_conditional_velocity_field">get_conditional_velocity_field() (stix.core.interpolant.ContinuousInterpolant method)</a>
+</li>
+        <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.get_context_conditional_generator">get_context_conditional_generator() (in module stix.sampling.guidance)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.ema.get_debiased_ema">get_debiased_ema() (in module stix.training.ema)</a>
+</li>
+        <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.get_discrete_classifier_free_guidance_generator">get_discrete_classifier_free_guidance_generator() (in module stix.sampling.guidance)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel.get_embeddings">get_embeddings() (stix.core.gen_model.GenerativeModel method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_generator">get_generator() (stix.core.gen_model.factory.NoiseOneSidedGenerativeModel method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_generator">(stix.core.gen_model.factory.PosteriorMixtureGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_generator">(stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_generator">(stix.core.gen_model.factory.VelocityOneSidedGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_generator">(stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel.get_generator">(stix.core.gen_model.GenerativeModel method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel.get_guidance_loss">get_guidance_loss() (stix.core.gen_model.GenerativeModel method)</a>
+</li>
+        <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.get_intrinsic_guidance_generator">get_intrinsic_guidance_generator() (in module stix.sampling.guidance)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel.get_loss">get_loss() (stix.core.gen_model.factory.NoiseOneSidedGenerativeModel method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel.get_loss">(stix.core.gen_model.factory.PosteriorMixtureGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel.get_loss">(stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel.get_loss">(stix.core.gen_model.factory.VelocityOneSidedGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel.get_loss">(stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel method)</a>
+</li>
+          <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel.get_loss">(stix.core.gen_model.GenerativeModel method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.GenerativeModel.get_network_output">get_network_output() (stix.core.gen_model.GenerativeModel method)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.graphdef">graphdef (stix.training.training_state.TrainingState attribute)</a>
+</li>
+        <li><a href="api_reference/sampling/guidance.html#stix.sampling.guidance.GuidanceFn">GuidanceFn (class in stix.sampling.guidance)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.IdentityEmbedder">IdentityEmbedder (class in stix.core.embedder)</a>
+</li>
+        <li><a href="api_reference/core/utils.html#stix.core.utils.infer_num_samples_from_raw_source">infer_num_samples_from_raw_source() (in module stix.core.utils)</a>
+</li>
+        <li><a href="api_reference/sampling/solver.html#stix.sampling.solver.Solver.integrate">integrate() (stix.sampling.solver.Solver method)</a>
+
+        <ul>
+          <li><a href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolver.integrate">(stix.sampling.solver_manual.ManualSolver method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolver.integrate_with_trajectory">integrate_with_trajectory() (stix.sampling.solver_manual.ManualSolver method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant">Interpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant.interpolant_fn">interpolant_fn() (stix.core.interpolant.ContinuousInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousOneSidedStochasticInterpolant.interpolant_fn">(stix.core.interpolant.ContinuousOneSidedStochasticInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearInterpolant.interpolant_fn">(stix.core.interpolant.LinearInterpolant method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant.interpolate">interpolate() (stix.core.interpolant.ContinuousInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.interpolate">(stix.core.interpolant.DiscreteInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.interpolate">(stix.core.interpolant.Interpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.is_discrete">is_discrete (stix.typing.data.Batch attribute)</a>
+</li>
+        <li><a href="api_reference/core/utils.html#stix.core.utils.is_one_hot_vector">is_one_hot_vector() (in module stix.core.utils)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="K" class="genindex-section">
+  <h2>K</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.keep_best">keep_best (stix.training.checkpointer.CheckpointerConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.keep_best">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.latest_step">latest_step() (stix.training.checkpointer.Checkpointer method)</a>
+</li>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.LearnedDiscreteEmbedder">LearnedDiscreteEmbedder (class in stix.core.embedder)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearDeterministicInterpolant">LinearDeterministicInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearInterpolant">LinearInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant">LinearStochasticInterpolant (class in stix.core.interpolant)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.log">log() (stix.training.training_io_handler.TrainingIOHandler method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_loggers.log_metrics_to_line">log_metrics_to_line() (in module stix.training.training_loggers)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_loggers.log_metrics_to_table">log_metrics_to_table() (in module stix.training.training_loggers)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory">LoggingCategory (class in stix.training.training_io_handler)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.loss_mask">loss_mask (stix.typing.data.Batch attribute)</a>
+</li>
+        <li><a href="api_reference/training/loss_pipeline.html#stix.training.loss_pipeline.LossPipeline">LossPipeline (class in stix.training.loss_pipeline)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolver">ManualSolver (class in stix.sampling.solver_manual)</a>
+</li>
+        <li><a href="api_reference/sampling/solver_manual.html#stix.sampling.solver_manual.ManualSolverConfig">ManualSolverConfig (class in stix.sampling.solver_manual)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.map">map() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.Mask">Mask (in module stix.typing.core)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant.mask_index">mask_index (stix.core.interpolant.MaskDiscreteInterpolant property)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant">MaskDiscreteInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.max_to_keep">max_to_keep (stix.training.checkpointer.CheckpointerConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.max_to_keep">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.mixture_conditionals">mixture_conditionals() (stix.core.interpolant.DiscreteInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant.mixture_conditionals">(stix.core.interpolant.MaskDiscreteInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.UniformDiscreteInterpolant.mixture_conditionals">(stix.core.interpolant.UniformDiscreteInterpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant.mixture_distributions_from_target_posterior">mixture_distributions_from_target_posterior() (stix.core.interpolant.MaskDiscreteInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.UniformDiscreteInterpolant.mixture_distributions_from_target_posterior">(stix.core.interpolant.UniformDiscreteInterpolant method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.Modality">Modality (class in stix.core.modality)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry">ModalityRegistry (class in stix.core.modality)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig.model_config">model_config (stix.nn.NetworkDimsConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.model_config">(stix.training.checkpointer.CheckpointerConfig attribute)</a>
+</li>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.model_config">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+          <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.model_config">(stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    module
+
+        <ul>
+          <li><a href="api_reference/index.html#module-stix">stix</a>
+</li>
+          <li><a href="api_reference/sampling/guidance.html#module-stix.sampling.guidance">stix.sampling.guidance</a>
+</li>
+          <li><a href="api_reference/sampling/steps.html#module-stix.sampling.steps">stix.sampling.steps</a>
+</li>
+          <li><a href="api_reference/typing/index.html#module-stix.typing.core">stix.typing.core</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/criterion.html#stix.core.loss.MSECriterion">MSECriterion (class in stix.core.loss)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.MultiHeadDecoder">MultiHeadDecoder (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.MultiHeadSelfAttention">MultiHeadSelfAttention (class in stix.nn.layers)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/nn/network.html#stix.nn.Network">Network (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/nn/network.html#stix.nn.NetworkDimsConfig">NetworkDimsConfig (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.noise_from_score">noise_from_score() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.noise_from_target">noise_from_target() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.noise_from_velocity">noise_from_velocity() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.noise_from_velocity_field">noise_from_velocity_field() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.NoiseOneSidedGenerativeModel">NoiseOneSidedGenerativeModel (class in stix.core.gen_model.factory)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.NoiseVar">NoiseVar (in module stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.num_gradient_accumulation_steps">num_gradient_accumulation_steps (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.num_steps">num_steps (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.num_steps">(stix.training.training_state.TrainingState attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/embedder.html#stix.core.embedder.OneHotDiscreteEmbedder">OneHotDiscreteEmbedder (class in stix.core.embedder)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedInterpolant">OneSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant">OneSidedLinearStochasticInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.opt_state">opt_state (stix.training.training_state.TrainingState attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.params">params (stix.training.training_state.TrainingState attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.PosteriorMixtureGenerativeModel">PosteriorMixtureGenerativeModel (class in stix.core.gen_model.factory)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.PRNGKeyArray">PRNGKeyArray (in module stix.typing.core)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.random_seed">random_seed (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.rates_from_mixture_distributions">rates_from_mixture_distributions() (stix.core.interpolant.DiscreteInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant.rates_from_target_posterior">rates_from_target_posterior() (stix.core.interpolant.MaskDiscreteInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.UniformDiscreteInterpolant.rates_from_target_posterior">(stix.core.interpolant.UniformDiscreteInterpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.raw_batch">raw_batch (stix.typing.data.Batch attribute)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.RawCtsVar">RawCtsVar (in module stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.RawDisVar">RawDisVar (in module stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.RawSourceTargetPair">RawSourceTargetPair (class in stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.RawVar">RawVar (in module stix.typing.variables)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.read_run_metadata">read_run_metadata() (in module stix.training.checkpointer)</a>
+</li>
+        <li><a href="api_reference/core/criterion.html#stix.core.loss.reduce_modality_losses">reduce_modality_losses() (in module stix.core.loss)</a>
+</li>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.RegressionHead">RegressionHead (class in stix.nn.layers)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.Generator.replace">replace() (stix.core.generator.Generator method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/generator.html#stix.core.generator.TransitionRates.replace">(stix.core.generator.TransitionRates method)</a>
+</li>
+          <li><a href="api_reference/core/generator.html#stix.core.generator.Velocity.replace">(stix.core.generator.Velocity method)</a>
+</li>
+          <li><a href="api_reference/core/generator.html#stix.core.generator.VelocityAndScore.replace">(stix.core.generator.VelocityAndScore method)</a>
+</li>
+          <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.replace">(stix.training.training_state.TrainingState method)</a>
+</li>
+          <li><a href="api_reference/typing/index.html#stix.typing.data.Batch.replace">(stix.typing.data.Batch method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.restore">restore() (stix.training.checkpointer.Checkpointer method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.restore_checkpoint">restore_checkpoint() (stix.training.training_io_handler.TrainingIOHandler method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.restore_checkpoint_if_exists">restore_checkpoint_if_exists (stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.restore_dir">restore_dir (stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.restore_ema">restore_ema() (stix.training.checkpointer.Checkpointer method)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.restore_model">restore_model() (stix.training.training_loop.TrainingLoop method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.restore_optimizer_state">restore_optimizer_state (stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        <li><a href="api_reference/sampling/utils.html#stix.sampling.utils.Direction.REVERSE">REVERSE (stix.sampling.utils.Direction attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState.rng_key">rng_key (stix.training.training_state.TrainingState attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.run">run() (stix.training.training_loop.TrainingLoop method)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.run_eval_at_start">run_eval_at_start (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.sample_initial_state">sample_initial_state() (stix.core.interpolant.Interpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearInterpolant.sample_initial_state">(stix.core.interpolant.LinearInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.MaskDiscreteInterpolant.sample_initial_state">(stix.core.interpolant.MaskDiscreteInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.UniformDiscreteInterpolant.sample_initial_state">(stix.core.interpolant.UniformDiscreteInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.sample_initial_state">(stix.core.modality.ModalityRegistry method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.ContinuousInterpolant.sample_noise">sample_noise() (stix.core.interpolant.ContinuousInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.DiscreteInterpolant.sample_noise">(stix.core.interpolant.DiscreteInterpolant method)</a>
+</li>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.Interpolant.sample_noise">(stix.core.interpolant.Interpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.save">save() (stix.training.checkpointer.Checkpointer method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.save_checkpoint">save_checkpoint() (stix.training.training_io_handler.TrainingIOHandler method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.CheckpointerConfig.save_interval_steps">save_interval_steps (stix.training.checkpointer.CheckpointerConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.save_interval_steps">(stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.save_run_metadata">save_run_metadata() (in module stix.training.checkpointer)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.Scalar">Scalar (in module stix.typing.core)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.VelocityAndScore.score">score (stix.core.generator.VelocityAndScore attribute)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.score_from_noise">score_from_noise() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.score_from_target">score_from_target() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.score_from_velocity">score_from_velocity() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.score_from_velocity_field">score_from_velocity_field() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.set">set() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.Shape">Shape (in module stix.typing.core)</a>
+</li>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.SinusoidalFourierFeatures">SinusoidalFourierFeatures (class in stix.nn.layers)</a>
+</li>
+        <li><a href="api_reference/sampling/solver.html#stix.sampling.solver.Solver">Solver (class in stix.sampling.solver)</a>
+</li>
+        <li><a href="api_reference/sampling/solver.html#stix.sampling.solver.SolverConfig">SolverConfig (class in stix.sampling.solver)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair.source">source (stix.typing.variables.EmbeddedSourceTargetPair attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/typing/index.html#stix.typing.variables.RawSourceTargetPair.source">(stix.typing.variables.RawSourceTargetPair attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.split_and_project_key">split_and_project_key() (stix.core.modality.ModalityRegistry method)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.STEP_FNS">STEP_FNS (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig.step_to_restore">step_to_restore (stix.training.training_io_handler.TrainingIOHandlerConfig attribute)</a>
+</li>
+        <li>
+    stix
+
+        <ul>
+          <li><a href="api_reference/index.html#module-stix">module</a>
+</li>
+        </ul></li>
+        <li>
+    stix.sampling.guidance
+
+        <ul>
+          <li><a href="api_reference/sampling/guidance.html#module-stix.sampling.guidance">module</a>
+</li>
+        </ul></li>
+        <li>
+    stix.sampling.steps
+
+        <ul>
+          <li><a href="api_reference/sampling/steps.html#module-stix.sampling.steps">module</a>
+</li>
+        </ul></li>
+        <li>
+    stix.typing.core
+
+        <ul>
+          <li><a href="api_reference/typing/index.html#module-stix.typing.core">module</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.StochasticFlowMatchingTwoSidedInterpolant">StochasticFlowMatchingTwoSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/nn/context.html#stix.nn.SumContextEncoder">SumContextEncoder (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.SwiGLUFeedForward">SwiGLUFeedForward (class in stix.nn.layers)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.SYSTEM_METRICS">SYSTEM_METRICS (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/typing/index.html#stix.typing.variables.EmbeddedSourceTargetPair.target">target (stix.typing.variables.EmbeddedSourceTargetPair attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/typing/index.html#stix.typing.variables.RawSourceTargetPair.target">(stix.typing.variables.RawSourceTargetPair attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.target_from_noise">target_from_noise() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.target_from_score">target_from_score() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.target_from_velocity">target_from_velocity() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.target_from_velocity_field">target_from_velocity_field() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.TEST_METRICS">TEST_METRICS (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.Time">Time (in module stix.typing.core)</a>
+</li>
+        <li><a href="api_reference/nn/dit.html#stix.nn.TimeNoiseContextEncoder">TimeNoiseContextEncoder (class in stix.nn)</a>
+</li>
+        <li><a href="api_reference/training/time_sampler.html#stix.training.time_sampler.TimeSampler">TimeSampler (class in stix.training.time_sampler)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.LoggingCategory.TRAIN_METRICS">TRAIN_METRICS (stix.training.training_io_handler.LoggingCategory attribute)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop.training_state">training_state (stix.training.training_loop.TrainingLoop attribute)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler">TrainingIOHandler (class in stix.training.training_io_handler)</a>
+</li>
+        <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandlerConfig">TrainingIOHandlerConfig (class in stix.training.training_io_handler)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop.TrainingLoop">TrainingLoop (class in stix.training.training_loop)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig">TrainingLoopConfig (class in stix.training.training_loop_config)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_state.TrainingState">TrainingState (class in stix.training.training_state)</a>
+</li>
+        <li><a href="api_reference/nn/layers.html#stix.nn.layers.TransformerBlock">TransformerBlock (class in stix.nn.layers)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.TransitionRates">TransitionRates (class in stix.core.generator)</a>
+</li>
+        <li><a href="api_reference/core/modality.html#stix.core.modality.ModalityRegistry.treedef">treedef (stix.core.modality.ModalityRegistry property)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.UniformDiscreteInterpolant">UniformDiscreteInterpolant (class in stix.core.interpolant)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/time_sampler.html#stix.training.time_sampler.UniformTimeSampler">UniformTimeSampler (class in stix.training.time_sampler)</a>
+</li>
+        <li><a href="api_reference/training/training_loop.html#stix.training.training_loop_config.TrainingLoopConfig.use_ema_params_for_eval">use_ema_params_for_eval (stix.training.training_loop_config.TrainingLoopConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/sampling/utils.html#stix.sampling.utils.validate_generator_types">validate_generator_types() (in module stix.sampling.utils)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.core.Var">Var (in module stix.typing.core)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.VarianceExplodingDiffusionOneSidedInterpolant">VarianceExplodingDiffusionOneSidedInterpolant (class in stix.core.interpolant)</a>
+</li>
+        <li><a href="api_reference/typing/index.html#stix.typing.variable_type.VarType">VarType (class in stix.typing.variable_type)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.Velocity">Velocity (class in stix.core.generator)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.Velocity.velocity">velocity (stix.core.generator.Velocity attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/core/generator.html#stix.core.generator.VelocityAndScore.velocity">(stix.core.generator.VelocityAndScore attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_and_score_diffusion">velocity_and_score_diffusion() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_and_score_drift">velocity_and_score_drift() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_and_score_euler_maruyama_step">velocity_and_score_euler_maruyama_step() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_diffusion">velocity_diffusion() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_drift">velocity_drift() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/sampling/steps.html#stix.sampling.steps.velocity_euler_step">velocity_euler_step() (in module stix.sampling.steps)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_field_from_noise">velocity_field_from_noise() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_field_from_score">velocity_field_from_score() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_field_from_target">velocity_field_from_target() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearDeterministicInterpolant.velocity_field_from_velocity">velocity_field_from_velocity() (stix.core.interpolant.LinearDeterministicInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_field_from_velocity">(stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.velocity_field_from_velocity_and_noise">velocity_field_from_velocity_and_noise() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.velocity_field_from_velocity_and_score">velocity_field_from_velocity_and_score() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_from_noise">velocity_from_noise() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_from_score">velocity_from_score() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_from_target">velocity_from_target() (stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearDeterministicInterpolant.velocity_from_velocity_field">velocity_from_velocity_field() (stix.core.interpolant.LinearDeterministicInterpolant method)</a>
+
+        <ul>
+          <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.OneSidedLinearStochasticInterpolant.velocity_from_velocity_field">(stix.core.interpolant.OneSidedLinearStochasticInterpolant method)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.velocity_from_velocity_field_and_noise">velocity_from_velocity_field_and_noise() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/interpolant.html#stix.core.interpolant.LinearStochasticInterpolant.velocity_from_velocity_field_and_score">velocity_from_velocity_field_and_score() (stix.core.interpolant.LinearStochasticInterpolant method)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityAndPosteriorGenerativeModel">VelocityAndPosteriorGenerativeModel (class in stix.core.gen_model.factory)</a>
+</li>
+        <li><a href="api_reference/core/generator.html#stix.core.generator.VelocityAndScore">VelocityAndScore (class in stix.core.generator)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityOneSidedGenerativeModel">VelocityOneSidedGenerativeModel (class in stix.core.gen_model.factory)</a>
+</li>
+        <li><a href="api_reference/core/gen_model.html#stix.core.gen_model.factory.VelocityTwoSidedGenerativeModel">VelocityTwoSidedGenerativeModel (class in stix.core.gen_model.factory)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/training/io_handling.html#stix.training.checkpointer.Checkpointer.wait_until_finished">wait_until_finished() (stix.training.checkpointer.Checkpointer method)</a>
+
+        <ul>
+          <li><a href="api_reference/training/io_handling.html#stix.training.training_io_handler.TrainingIOHandler.wait_until_finished">(stix.training.training_io_handler.TrainingIOHandler method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
